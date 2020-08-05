@@ -1,10 +1,15 @@
 import React from 'react';
+import Toolbar from '@material-ui/core/Toolbar';
+import Container from '@material-ui/core/Container';
 
 const LandingPage = () => {
   return (
-    <div>
-    LandingPage
-    </div>
+    <React.Fragment>
+      <Container>
+        <Toolbar />
+        LandingPage
+      </Container>
+    </React.Fragment>
   );
 }
 
