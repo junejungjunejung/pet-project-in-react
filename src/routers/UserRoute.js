@@ -9,9 +9,7 @@ export const UserRoute = ({
 }) => (
     <Route {...rest} component={(props) => (
       isAuthenticated ? (
-        <div>
           <Component {...props} />
-        </div>
       ) : (
           <Redirect to="/" />
         )

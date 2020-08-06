@@ -1,5 +1,6 @@
 import React from 'react';
 import Login from './Login';
+import Logout from './Logout';
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -24,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
+
+// need to toggle login/out buttons
 
 export default function ButtonAppBar() {
   const classes = useStyles();
@@ -51,6 +54,7 @@ export default function ButtonAppBar() {
 
           <Divider orientation="vertical" flexItem />
           <Login color="inherit" />
+          <Logout color="inherit" />
         </Toolbar>
       </AppBar>
     </div>

@@ -8,22 +8,66 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-
+  list: {
+    display: 'flex',
+    flexFlow: 'column wrap',
+    justifyContent: 'space-around',
+    height: 200
+  },
 }));
 
 const devTools = [
   {
     name: 'React.js',
+    id:1,
     icon: '',
     url: 'url'
   },
   {
     name: 'Firebase',
+    id:2,
     icon: '',
     url: 'url'
   },
   {
     name: 'Material-UI',
+    id:3,
+    icon: '',
+    url: 'url'
+  },
+  {
+    name: 'React.js',
+    id:4,
+    icon: '',
+    url: 'url'
+  },
+  {
+    name: 'Firebase',
+    id:5,
+    icon: '',
+    url: 'url'
+  },
+  {
+    name: 'Material-UI',
+    id:6,
+    icon: '',
+    url: 'url'
+  },
+  {
+    name: 'React.js',
+    id:7,
+    icon: '',
+    url: 'url'
+  },
+  {
+    name: 'Firebase',
+    id:8,
+    icon: '',
+    url: 'url'
+  },
+  {
+    name: 'Material-UI',
+    id:9,
     icon: '',
     url: 'url'
   },
@@ -34,11 +78,16 @@ export default function BuildTools() {
 
   return (
     <React.Fragment>
-      <Grid>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+      >
         <Typography>This website is built with,</Typography>
-        <List>
+        <List className={classes.list}>
           {devTools.map((devTool) => (
-            <ListItem button>
+            <ListItem button key={devTool.id}>
               <ListItemText primary={devTool.name} />
             </ListItem>
           ))}

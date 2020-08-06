@@ -13,9 +13,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  sidear: {
-    minWidth: 300
-  },
   main: {
     marginLeft: 300
   }
@@ -27,7 +24,7 @@ const AppRouter = () => {
   return (
     <React.Fragment>
       <Header />
-      <Sidebar className={classes.sidebar}/>
+      <Sidebar />
       <Container className={classes.main}>
         <Switch>
           <PublicRoute path="/" component={LandingPage} exact={true} />

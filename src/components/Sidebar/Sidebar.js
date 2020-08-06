@@ -5,8 +5,11 @@ import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
+import CatFacts from './CatFacts';
+import WeatherInfo from './WeatherInfo';
 
-
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
+import PetsIcon from '@material-ui/icons/Pets';
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -35,9 +38,8 @@ export default function Sidebar() {
         >
           <Toolbar />
           <div className={classes.drawerContainer}>
-            <p className={classes.content}> weather api </p>
-            <Divider />
-            <p className={classes.content}>cat api</p>
+            <WeatherInfo className={classes.content} />
+            <CatFacts className={classes.content} />
           </div>
         </Drawer>
       </Container>
