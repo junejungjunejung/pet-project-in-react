@@ -5,7 +5,7 @@ import { startLogin } from '../../actions/auth';
 import Button from '@material-ui/core/Button';
 
 export const Login = ({ startLogin }) => (
-  <Button onClick={startLogin} variant="contained" color="default" disableElevation>Login with Google</Button>
+  <Button onClick={startLogin} variant="outlined" color="primary" disableElevation>Login with Google</Button>
 );
 
 const mapDispatchToProps = (dispatch) => ({

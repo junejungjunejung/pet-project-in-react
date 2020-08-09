@@ -1,13 +1,14 @@
 import React from 'react';
+import { firebase } from '../../firebase/firebase';
 
 import Toolbar from '@material-ui/core/Toolbar';
-import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Pagination from '@material-ui/lab/Pagination';
+import Button from '@material-ui/core/Button';
 
 import PostList from './PostList';
 
@@ -23,6 +24,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+let userName;
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    userName = user.displayName;
+  } else {
+    userName = 'Anon'
+  }
+});
 
 const UserDashboardPage = () => {
   const classes = useStyles();
@@ -41,10 +51,10 @@ const UserDashboardPage = () => {
 
   return (
     <React.Fragment>
-      <Container>
+      <div>
         <Toolbar />
         <Typography variant="h3" component="h2">
-          Hi, UserName. How’s your day?
+          Hi, { userName }. How’s your day?
         </Typography>
 
         <FormControl variant="outlined" className={classes.formControl}>
@@ -66,10 +76,11 @@ const UserDashboardPage = () => {
           </Select>
         </FormControl>
 
+        <Button variant="contained" color="primary" disableElevation>New Post</Button>
         <PostList />
 
         <Pagination count={10} />
-      </Container>
+      </div>
     </React.Fragment>
   );
 }

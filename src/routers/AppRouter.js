@@ -6,6 +6,9 @@ import Sidebar from '../components/Sidebar/Sidebar';
 import Footer from '../components/Footer/Footer';
 import UserDashboardPage from '../components/UserDashboard/UserDashboardPage';
 import LandingPage from '../components/Landing/LandingPage';
+import CreatePost from '../components/CreatePost';
+import ReadPost from '../components/ReadPost';
+import EditPost from '../components/EditPost';
 import UserRoute from './UserRoute';
 import PublicRoute from './PublicRoute';
 
@@ -29,6 +32,9 @@ const AppRouter = () => {
         <Switch>
           <PublicRoute path="/" component={LandingPage} exact={true} />
           <UserRoute path="/dashboard" component={UserDashboardPage} />
+          <UserRoute path="/create" component={CreatePost} />
+          <UserRoute path="/read/:id" component={ReadPost} />
+          <UserRoute path="/edit/:id" component={EditPost} />
           <Route component={LandingPage} />
         </Switch>
       </Container>

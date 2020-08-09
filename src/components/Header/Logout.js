@@ -4,7 +4,7 @@ import { startLogout } from '../../actions/auth';
 import Button from '@material-ui/core/Button';
 
 export const Logout = ({ startLogout }) => (
-  <Button onClick={startLogout} variant="contained" color="default" disableElevation>Logout</Button>
+  <Button onClick={startLogout} variant="outlined" color="primary" disableElevation>Logout</Button>
 );
 
 const mapDispatchToProps = (dispatch) => ({
