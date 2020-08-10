@@ -8,8 +8,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
+import { catFact, catPicture } from '../../actions/catInfo';
 import catImage from '../../image/cute-cat.jpg';
-// Need to bring cat image from API. set const and bring them.
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,8 +30,14 @@ const useStyles = makeStyles((theme) => ({
 export default function CatFacts() {
   const classes = useStyles();
 
+  const catPic = catPicture();
+
   return (
     <React.Fragment>
+
+      {/* picture from API dosn't render. */}
+      <img src={catPic} alt=''/>
+
       <Card className={classes.root} variant="outlined">
         <Typography variant="h5" component="h2">
           Daily dose of Cat facts

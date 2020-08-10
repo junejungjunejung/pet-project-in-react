@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState, useCallback }from 'react';
+import { geocode } from '../../actions/geocode'
+import { forecast } from '../../actions/forecast'
+
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -31,10 +34,10 @@ export default function WeatherInfo() {
       alignItems="center"
       className={classes.root}
     >
-      <form className={classes.form} noValidate autoComplete="off">
+      <form className={classes.form} noValidate autoComplete="off" >
         <TextField id="outlined-basic" placeholder="Search a location" variant="outlined" />
       </form>
-      <Button variant="outlined" color="primary">Let’s have a convo !</Button>
+      <Button variant="outlined" color="primary">Click Here !</Button>
       <Typography variant="h6">See weather information</Typography>
       <Typography variant="body1" component="p" gutterBottom>Back ground image of the right side will change based on the location you input in the form above.</Typography>
     </Grid>
