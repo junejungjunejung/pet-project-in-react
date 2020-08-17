@@ -2,7 +2,7 @@ import React from 'react';
 import Login from './Login';
 import Logout from './Logout';
 import { firebase } from '../../firebase/firebase';
-
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -27,14 +27,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// need to toggle login/out buttons
+// need to auto toggle login/out buttons
 let loginButtonToggle;
-
+let homeButtonToggle;
+//maybe this is overlapping with index.js fuction???
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     loginButtonToggle = <Logout color="inherit" />
+    homeButtonToggle = <Link to='/dashboard'>BlogAboutYourDay</Link>
   } else {
     loginButtonToggle = <Login color="inherit" />
+    homeButtonToggle = <Link to='/'>BlogAboutYourDay</Link>
   }
 });
 
@@ -45,19 +48,24 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="sticky" color="default" className={classes.appBar}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <Comment />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            BlogAboutYourDay
-          </Typography>
+            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+              <Comment />
+            </IconButton>
+            <Typography variant="h6" className={classes.title}>
+            { homeButtonToggle}
+            </Typography>
 
-          <IconButton color="inherit">
-            <LinkedIn />
-          </IconButton>
-          <IconButton color="inherit">
-          <GitHub />
-          </IconButton>
+          <a href="https://www.linkedin.com/in/junejungjunejung/" target="_blank" rel="noopener noreferrer">
+            <IconButton color="inherit">
+              <LinkedIn />
+            </IconButton>
+          </a>
+
+          <a href="https://github.com/junejungjunejung" target="_blank" rel="noopener noreferrer">
+            <IconButton color="inherit">
+              <GitHub />
+            </IconButton>
+          </a>
 
           <Divider orientation="vertical" flexItem />
 

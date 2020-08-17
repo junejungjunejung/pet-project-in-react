@@ -21,56 +21,47 @@ const devTools = [
   {
     name: 'React.js',
     id:1,
-    icon: '',
-    url: 'url'
+    url: 'https://reactjs.org/'
   },
   {
     name: 'Firebase',
     id:2,
-    icon: '',
-    url: 'url'
+    url: 'https://firebase.google.com/'
   },
   {
     name: 'Material-UI',
     id:3,
-    icon: '',
-    url: 'url'
+    url: 'https://material-ui.com/'
   },
   {
-    name: 'React.js',
+    name: 'weatherstack',
     id:4,
-    icon: '',
-    url: 'url'
+    url: 'https://weatherstack.com/'
   },
   {
-    name: 'Firebase',
+    name: 'Unsplash',
     id:5,
-    icon: '',
-    url: 'url'
+    url: 'https://unsplash.com/developers'
   },
   {
-    name: 'Material-UI',
+    name: 'TheCatApi',
     id:6,
-    icon: '',
-    url: 'url'
+    url: 'https://thecatapi.com/'
   },
   {
-    name: 'React.js',
+    name: 'Cat Facts',
     id:7,
-    icon: '',
-    url: 'url'
+    url: 'https://cat-fact.herokuapp.com/#/'
   },
   {
-    name: 'Firebase',
+    name: 'Figma',
     id:8,
-    icon: '',
-    url: 'url'
+    url: 'https://www.figma.com/'
   },
   {
-    name: 'Material-UI',
+    name: 'GitHub',
     id:9,
-    icon: '',
-    url: 'url'
+    url: 'https://github.com/'
   },
 ]
 
@@ -90,7 +81,9 @@ export default function BuildTools() {
           {devTools.map((devTool) => (
             <ListItem button key={devTool.id}>
               <FiberManualRecordIcon />
-              <ListItemText primary={devTool.name} />
+              <a href={devTool.url} target="_blank" rel="noopener noreferrer">
+                <ListItemText primary={devTool.name} />
+              </a>
             </ListItem>
           ))}
         </List>

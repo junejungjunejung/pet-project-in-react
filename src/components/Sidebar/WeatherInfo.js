@@ -26,7 +26,9 @@ export default function WeatherInfo() {
   const classes = useStyles();
 
   const [location, setLocation] = useState('');
-  const [{forecast, search, isLoading, isError}, setSearch] = useWeatherApi();
+  const [{forecast, search, isLoading, isError, bgiWeather, bgiTime}, setSearch] = useWeatherApi();
+  
+  const bgiQuery = `${bgiWeather} ${bgiTime}`;
 
   return (
     <React.Fragment>

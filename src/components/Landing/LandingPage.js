@@ -9,9 +9,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    background: 'url("https://cdn2.thecatapi.com/images/MWU55D0sw.jpg") no-repeat center center fixed',
-    backgroundSize: 'cover'
   },
 }));
 
@@ -20,7 +17,7 @@ const LandingPage = () => {
 
   return (
     <React.Fragment>
-      <Container className={classes.root}>
+      <Container>
         <Toolbar />
         <Typography variant="h3" component="h2" gutterBottom>
           Welcome to BlogAboutYourDay
