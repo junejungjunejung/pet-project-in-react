@@ -2,6 +2,9 @@ import React from 'react';
 import Login from './Login';
 import Logout from './Logout';
 import { firebase } from '../../firebase/firebase';
+import { login, logout } from '../../actions/auth';
+import configureStore from '../../store/configureStore';
+
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -30,12 +33,18 @@ const useStyles = makeStyles((theme) => ({
 // need to auto toggle login/out buttons
 let loginButtonToggle;
 let homeButtonToggle;
-//maybe this is overlapping with index.js fuction???
-firebase.auth().onAuthStateChanged(function(user) {
+
+const store = configureStore();
+
+firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    store.dispatch(login(user.uid));
+
     loginButtonToggle = <Logout color="inherit" />
     homeButtonToggle = <Link to='/dashboard'>BlogAboutYourDay</Link>
   } else {
+    store.dispatch(logout());
+
     loginButtonToggle = <Login color="inherit" />
     homeButtonToggle = <Link to='/'>BlogAboutYourDay</Link>
   }

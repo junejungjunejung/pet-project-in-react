@@ -6,9 +6,9 @@ import Sidebar from '../components/Sidebar/Sidebar';
 import Footer from '../components/Footer/Footer';
 import UserDashboardPage from '../components/UserDashboard/UserDashboardPage';
 import LandingPage from '../components/Landing/LandingPage';
-import CreatePost from '../components/CreatePost';
-import ReadPost from '../components/ReadPost';
-import EditPost from '../components/EditPost';
+import CreatePost from '../components/UserDashboard/CreatePost';
+import ReadPost from '../components/UserDashboard/ReadPost';
+import EditPost from '../components/UserDashboard/EditPost';
 import UserRoute from './UserRoute';
 import PublicRoute from './PublicRoute';
 
