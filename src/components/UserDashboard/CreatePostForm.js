@@ -5,8 +5,10 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 import moment from 'moment';
-import 'react-dates/initialize';
-import { SingleDatePicker } from 'react-dates';
+
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 
 const styles = (theme) => ({
   root: {
@@ -22,19 +24,19 @@ const styles = (theme) => ({
   }
 });
 
-class CreatePost extends React.Component {
+class CreatePostForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      postTitle: props.expense ? props.expense.postTitle : '',
-      note: props.expense ? props.expense.note : '',
-      createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
+      postTitle: props.post ? props.post.postTitle : '',
+      note: props.post ? props.post.note : '',
+      createdAt: props.post ? moment(props.post.createdAt) : moment(),
       calendarFocused: false,
-      error: ''
+      error: '',
     };
   }
-  onDescriptionChange = (e) => {
+  onTitleChange = (e) => {
     const postTitle = e.target.value;
     this.setState(() => ({ postTitle }));
   };
@@ -53,12 +55,12 @@ class CreatePost extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    if (!this.state.postTitle || !this.state.amount) {
+    if (!this.state.postTitle) {
       this.setState(() => ({ error: 'Please provide post title.' }));
     } else {
       this.setState(() => ({ error: '' }));
       this.props.onSubmit({
-        postTitlen: this.state.postTitle,
+        postTitle: this.state.postTitle,
         createdAt: this.state.createdAt.valueOf(),
         note: this.state.note
       });
@@ -68,10 +70,8 @@ class CreatePost extends React.Component {
   render(){
     const { classes } = this.props;
 
-
     return (
       <React.Fragment>
-      <Button>Back to Dashboard</Button>
         <div className={classes.container}>
           <form className={classes.root} onSubmit={this.onSubmit}>
           {this.state.error && <p className="form__error">{this.state.error}</p>}
@@ -81,16 +81,24 @@ class CreatePost extends React.Component {
               label="Post Title"
               variant="outlined"
               value={this.state.postTitle}
-              onChange={this.onDescriptionChange}
+              onChange={this.onTitleChange}
             />
-            <SingleDatePicker
-              date={this.state.createdAt}
-              onDateChange={this.onDateChange}
-              focused={this.state.calendarFocused}
-              onFocusChange={this.onFocusChange}
-              numberOfMonths={1}
-              isOutsideRange={() => false}
+
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+              disableToolbar
+              variant="inline"
+              format="MM/dd/yyyy"
+              margin="normal"
+              id="date-picker-inline"
+              value={this.state.createdAt}
+              onChange={this.onDateChange}
+              KeyboardButtonProps={{
+                'aria-label': 'change date',
+              }}
             />
+            </MuiPickersUtilsProvider>
+
             <TextField
               id="outlined"
               label="Post Content"
@@ -109,4 +117,4 @@ class CreatePost extends React.Component {
   }
 }
 
-export default withStyles(styles)(CreatePost);
+export default withStyles(styles)(CreatePostForm);
