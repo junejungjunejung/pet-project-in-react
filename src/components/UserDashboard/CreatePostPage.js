@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import CreatePostForm from './CreatePostForm';
 import { startAddPost } from '../../actions/post';
 
-import Button from '@material-ui/core/Button';//change to Link
+import Link from '@material-ui/core/Link';
 
 export class CreatePostPage extends React.Component {
   onSubmit = (post) => {
     this.props.startAddPost(post);
     this.props.history.push('/dashboard');
+    console.log(post)
   };
   render() {
     return (
@@ -19,7 +20,7 @@ export class CreatePostPage extends React.Component {
           </div>
         </div>
         <div className="content-container">
-          <Button>Back to Dashboard</Button>
+          <Link>Back to Dashboard</Link>
           <CreatePostForm
             onSubmit={this.onSubmit}
           />

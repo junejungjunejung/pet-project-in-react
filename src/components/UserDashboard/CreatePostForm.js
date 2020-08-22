@@ -30,7 +30,7 @@ class CreatePostForm extends React.Component {
 
     this.state = {
       postTitle: props.post ? props.post.postTitle : '',
-      note: props.post ? props.post.note : '',
+      postBody: props.post ? props.post.postBody : '',
       createdAt: props.post ? moment(props.post.createdAt) : moment(),
       calendarFocused: false,
       error: '',
@@ -40,21 +40,19 @@ class CreatePostForm extends React.Component {
     const postTitle = e.target.value;
     this.setState(() => ({ postTitle }));
   };
-  onNoteChange = (e) => {
-    const note = e.target.value;
-    this.setState(() => ({ note }));
+  onBodyChange = (e) => {
+    const postBody = e.target.value;
+    this.setState(() => ({ postBody }));
   };
   onDateChange = (createdAt) => {
     if (createdAt) {
       this.setState(() => ({ createdAt }));
     }
   };
-  onFocusChange = ({ focused }) => {
-    this.setState(() => ({ calendarFocused: focused }));
-  };
+
   onSubmit = (e) => {
     e.preventDefault();
-
+    
     if (!this.state.postTitle) {
       this.setState(() => ({ error: 'Please provide post title.' }));
     } else {
@@ -62,8 +60,9 @@ class CreatePostForm extends React.Component {
       this.props.onSubmit({
         postTitle: this.state.postTitle,
         createdAt: this.state.createdAt.valueOf(),
-        note: this.state.note
+        postBody: this.state.postBody
       });
+      console.log(this.state.postTitle)
     }
   };
 
@@ -106,11 +105,12 @@ class CreatePostForm extends React.Component {
               rows={20}
               type="search"
               variant="outlined"
-              value={this.state.note}
-              onChange={this.onNoteChange}
+              value={this.state.postBody}
+              onChange={this.onBodyChange}
             />
+            <Button type="submit" variant="contained" color="primary" disableElevation>Create Post</Button>
           </form>
-          <Button variant="contained" color="primary" disableElevation>Create Post</Button>
+         
         </div>
       </React.Fragment>
     );

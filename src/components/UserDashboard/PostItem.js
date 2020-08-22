@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PostItem = ({ id, postTitle, createdAt }) => {
+const PostItem = ({ id, postTitle, postBody, createdAt }) => {
   
   const classes = useStyles();
 
@@ -34,7 +34,7 @@ const PostItem = ({ id, postTitle, createdAt }) => {
               {moment(createdAt).format('MMMM Do, YYYY')}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              Post Summary
+              {postBody}
             </Typography>
           </CardContent>
         </CardActionArea>

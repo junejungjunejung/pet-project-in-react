@@ -1,8 +1,8 @@
-// Post Reducer
+// Posts Reducer
 
-const postReducerDefaultState = [];
+const postsReducerDefaultState = [];
 
-export default (state = postReducerDefaultState, action) => {
+export default (state = postsReducerDefaultState, action) => {
   switch (action.type) {
     case 'ADD_POST':
       return [
@@ -22,8 +22,8 @@ export default (state = postReducerDefaultState, action) => {
           return post;
         };
       });
-    case 'SET_POST':
-      return action.post;
+    case 'SET_POSTS':
+      return action.posts;
     default:
       return state;
   }

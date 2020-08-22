@@ -77,6 +77,7 @@ const UserDashboardPage = () => {
         </FormControl>
 
         <Button variant="contained" color="primary" disableElevation>New Post</Button>
+        
         <PostList />
 
         <Pagination count={10} />

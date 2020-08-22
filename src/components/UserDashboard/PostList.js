@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Container from '@material-ui/core/Container';
 
@@ -8,14 +9,31 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import PostItem from './PostItem';
 
-const PostList = () => {
+const PostList = (props) => {
   return (
-    <React.Fragment>
-      <Container>
-        <PostItem />
-      </Container>
-    </React.Fragment>
+    <Container>
+      <div className="list-body">
+      {console.log(props)}
+        { 
+          props.posts.length === 0 ? (
+            <div className="list-item list-item--message">
+              <span>No post</span>
+            </div>
+          ) : (
+              props.posts.map((post) => {
+                return <PostItem key={post.id} {...post} />;
+              })
+            )
+        }
+      </div>
+    </Container>
   );
 }
 
-export default PostList;
+const mapStateToProps = (state) => {
+  return {
+    posts: state.posts
+  };
+};
+
+export default connect(mapStateToProps)(PostList);
