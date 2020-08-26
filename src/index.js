@@ -7,6 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { history } from './App';
 import { firebase } from './firebase/firebase';
 import { login, logout } from './actions/auth';
+import { startSetPosts } from './actions/post';
 import LoadingPage from './components/LoadingPage';
 
 import * as serviceWorker from './serviceWorker';
@@ -33,10 +34,12 @@ ReactDOM.render(<LoadingPage />, document.getElementById('root'));
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
-    renderApp();
-    if (history.location.pathname === '/') {
-      history.push('/dashboard');
-    }
+    store.dispatch(startSetPosts()).then(() => {
+      renderApp();
+      if (history.location.pathname === '/') {
+        history.push('/dashboard');
+      }
+    });
   } else {
     store.dispatch(logout());
     renderApp();

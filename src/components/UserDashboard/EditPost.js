@@ -1,51 +1,44 @@
 import React from 'react';
-
-import { makeStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+import { startRemovePost, startEditPost} from '../../actions/post';
+import CreatePostForm from './CreatePostForm';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '100%'
-    },
-    display: 'flex',
-    flexFlow: 'column nowrap'
-  },
-  container: {
-    maxWidth: '75ch'
+export class EditPost extends React.Component {
+  onSubmit = (post) => {
+    this.props.startEditPost(this.props.post.id, post);
+    this.props.history.push('/dashboard');
+  };
+  onRemove = () => {
+    this.props.startRemovePost({ id: this.props.post.id });
+    this.props.history.push('/dashboard');
+  };
+  render() {
+    return (
+      <React.Fragment>
+        <Link to={`/dashboard`}> Back to dashboard </Link>
+        <div>
+          <CreatePostForm
+            post={this.props.post}
+            onSubmit={this.onSubmit}
+          />
+          <Button variant="contained" color="primary" disableElevation onClick={this.onRemove} >Delete Post</Button>
+        </div>
+      </React.Fragment>
+    );
   }
-}));
-
-const EditPost = () => {
-  const classes = useStyles();
-
-  return (
-    <React.Fragment>
-    <Button>Back to Dashboard</Button>
-      <div className={classes.container}>
-        <form className={classes.root}>
-          <TextField
-            required
-            id="outlined-required"
-            label="Post Title"
-            variant="outlined"
-          />
-          <TextField
-            id="outlined"
-            label="Post Content"
-            multiline
-            rows={20}
-            type="search"
-            variant="outlined"
-          />
-        </form>
-        <Button variant="contained" color="primary" disableElevation>Delete Post</Button>
-        <Button variant="contained" color="primary" disableElevation>Edit Post</Button>
-      </div>
-    </React.Fragment>
-  );
 }
 
-export default EditPost;
+
+const mapStateToProps = (state, props) => ({
+  post: state.posts.find((post) => post.id === props.match.params.id)
+});
+
+const mapDispatchToProps = (dispatch, props) => ({
+  startEditPost: (id, post) => dispatch(startEditPost(id, post)),
+  startRemovePost: (data) => dispatch(startRemovePost(data))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditPost);

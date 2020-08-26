@@ -32,7 +32,6 @@ class CreatePostForm extends React.Component {
       postTitle: props.post ? props.post.postTitle : '',
       postBody: props.post ? props.post.postBody : '',
       createdAt: props.post ? moment(props.post.createdAt) : moment(),
-      calendarFocused: false,
       error: '',
     };
   }

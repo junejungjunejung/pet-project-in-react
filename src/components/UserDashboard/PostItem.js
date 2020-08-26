@@ -23,7 +23,7 @@ const PostItem = ({ id, postTitle, postBody, createdAt }) => {
   const classes = useStyles();
 
   return(
-    <Link className="list-item" to={`/edit/${id}`}>
+    <Link to={`/read/${id}`}>
       <Card className={classes.root}>
         <CardActionArea>
           <CardContent>
@@ -40,9 +40,9 @@ const PostItem = ({ id, postTitle, postBody, createdAt }) => {
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-            Edit
+            <Link className="list-item" to={`/edit/${id}`}>Edit</Link>
           </Button>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" >
             Delete
           </Button>
         </CardActions>

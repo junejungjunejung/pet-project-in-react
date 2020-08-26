@@ -1,19 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import Container from '@material-ui/core/Container';
-
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { makeStyles } from '@material-ui/core/styles';
-
 import PostItem from './PostItem';
 
 const PostList = (props) => {
   return (
     <Container>
       <div className="list-body">
-      {console.log(props)}
+       {console.log(props)}
         { 
           props.posts.length === 0 ? (
             <div className="list-item list-item--message">

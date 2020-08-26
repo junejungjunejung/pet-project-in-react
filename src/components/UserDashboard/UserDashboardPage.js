@@ -8,7 +8,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Pagination from '@material-ui/lab/Pagination';
-import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
 
 import PostList from './PostList';
 
@@ -76,7 +76,7 @@ const UserDashboardPage = () => {
           </Select>
         </FormControl>
 
-        <Button variant="contained" color="primary" disableElevation>New Post</Button>
+        <Link  href="/create" variant="contained" color="primary" disableElevation>New Post</Link>
         
         <PostList />
 

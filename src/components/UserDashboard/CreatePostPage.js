@@ -11,6 +11,7 @@ export class CreatePostPage extends React.Component {
     this.props.history.push('/dashboard');
     console.log(post)
   };
+
   render() {
     return (
       <div>
@@ -20,7 +21,7 @@ export class CreatePostPage extends React.Component {
           </div>
         </div>
         <div className="content-container">
-          <Link>Back to Dashboard</Link>
+          <Link href="/dashboard" >Back to Dashboard</Link>
           <CreatePostForm
             onSubmit={this.onSubmit}
           />
