@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startRemovePost, startEditPost} from '../../actions/post';
-import CreatePostForm from './CreatePostForm';
+import PostForm from './PostForm';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 
 export class EditPost extends React.Component {
@@ -20,7 +19,7 @@ export class EditPost extends React.Component {
       <React.Fragment>
         <Link to={`/dashboard`}> Back to dashboard </Link>
         <div>
-          <CreatePostForm
+          <PostForm
             post={this.props.post}
             onSubmit={this.onSubmit}
           />

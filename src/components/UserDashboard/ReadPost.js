@@ -1,35 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import PostItem from './PostItem';
 
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '100%'
-    },
-    display: 'flex',
-    flexFlow: 'column nowrap'
-  },
-  container: {
-    maxWidth: '75ch'
-  }
-}));
-
-const ReadPost = () => {
-  const classes = useStyles();
-
+const ReadPost = (props) => {
   return (
     <React.Fragment>
-    <Button>Back to Dashboard</Button>
-      <div className={classes.container}>
-        <div>post title</div>
-        <div>post date</div>
-        <div>post content</div>
-      </div>
+      <Link to={`/dashboard`}> Back to dashboard </Link>
+      <PostItem post={props.post}/>
     </React.Fragment>
   );
 }
 
-export default ReadPost;
+const mapStateToProps = (state, props) => ({
+  post: state.posts.find((post) => post.id === props.match.params.id)
+});
+
+export default connect(mapStateToProps)(ReadPost);

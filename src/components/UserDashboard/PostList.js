@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Container from '@material-ui/core/Container';
-import PostItem from './PostItem';
+import PostSummary from './PostSummary';
 
 const PostList = (props) => {
   return (
     <Container>
       <div className="list-body">
-       {console.log(props)}
         { 
           props.posts.length === 0 ? (
             <div className="list-item list-item--message">
@@ -15,7 +14,7 @@ const PostList = (props) => {
             </div>
           ) : (
               props.posts.map((post) => {
-                return <PostItem key={post.id} {...post} />;
+                return <PostSummary key={post.id} {...post} />;
               })
             )
         }

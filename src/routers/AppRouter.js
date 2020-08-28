@@ -4,11 +4,13 @@ import { Route, Switch } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
 import Footer from '../components/Footer/Footer';
-import UserDashboardPage from '../components/UserDashboard/UserDashboardPage';
 import LandingPage from '../components/Landing/LandingPage';
-import CreatePostPage from '../components/UserDashboard/CreatePostPage';
+import UserDashboardPage from '../components/UserDashboard/UserDashboardPage';
+import CreatePost from '../components/UserDashboard/CreatePost';
 import ReadPost from '../components/UserDashboard/ReadPost';
 import EditPost from '../components/UserDashboard/EditPost';
+import NotFoundPage from '../components/NotFoundPage';
+
 import UserRoute from './UserRoute';
 import PublicRoute from './PublicRoute';
 
@@ -41,7 +43,7 @@ const AppRouter = () => {
   }).catch(err => {
     console.log(err)
   });
-
+//router problem, keep stuck to not found page instead of landing and switching
   return (
     <React.Fragment>
       <Header />
@@ -50,10 +52,10 @@ const AppRouter = () => {
         <Switch>
           <PublicRoute path="/" component={LandingPage} exact={true} />
           <UserRoute path="/dashboard" component={UserDashboardPage} />
-          <UserRoute path="/create" component={CreatePostPage} />
+          <UserRoute path="/create" component={CreatePost} />
           <UserRoute path="/read/:id" component={ReadPost} />
           <UserRoute path="/edit/:id" component={EditPost} />
-          <Route component={LandingPage} />
+          <Route component={NotFoundPage} />
         </Switch>
       </Container>
       <Footer />

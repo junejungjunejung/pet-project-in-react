@@ -24,7 +24,7 @@ const styles = (theme) => ({
   }
 });
 
-class CreatePostForm extends React.Component {
+class PostForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -107,7 +107,7 @@ class CreatePostForm extends React.Component {
               value={this.state.postBody}
               onChange={this.onBodyChange}
             />
-            <Button type="submit" variant="contained" color="primary" disableElevation>Create Post</Button>
+            <Button type="submit" variant="contained" color="primary" disableElevation>Save Post</Button>
           </form>
          
         </div>
@@ -116,4 +116,4 @@ class CreatePostForm extends React.Component {
   }
 }
 
-export default withStyles(styles)(CreatePostForm);
+export default withStyles(styles)(PostForm);

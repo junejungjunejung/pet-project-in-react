@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CreatePostForm from './CreatePostForm';
+import PostForm from './PostForm';
 import { startAddPost } from '../../actions/post';
 
 import Link from '@material-ui/core/Link';
 
-export class CreatePostPage extends React.Component {
+export class CreatePost extends React.Component {
   onSubmit = (post) => {
     this.props.startAddPost(post);
     this.props.history.push('/dashboard');
@@ -22,7 +22,7 @@ export class CreatePostPage extends React.Component {
         </div>
         <div className="content-container">
           <Link href="/dashboard" >Back to Dashboard</Link>
-          <CreatePostForm
+          <PostForm
             onSubmit={this.onSubmit}
           />
         </div>
@@ -35,4 +35,4 @@ const mapDispatchToProps = (dispatch) => ({
   startAddPost: (post) => dispatch(startAddPost(post))
 });
 
-export default connect(undefined, mapDispatchToProps)(CreatePostPage);
+export default connect(undefined, mapDispatchToProps)(CreatePost);
