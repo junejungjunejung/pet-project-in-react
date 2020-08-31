@@ -3,8 +3,8 @@ import Login from './Login';
 import Logout from './Logout';
 import { firebase } from '../../firebase/firebase';
 import { login, logout } from '../../actions/auth';
-import configureStore from '../../store/configureStore';
 
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -31,27 +31,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // need to auto toggle login/out buttons
-let loginButtonToggle;
-let homeButtonToggle;
+//maybe use useEffect hook(=componentDidUpdate) for subscribing changes
 
-const store = configureStore();
-
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    store.dispatch(login(user.uid));
-
-    loginButtonToggle = <Logout color="inherit" />
-    homeButtonToggle = <Link to='/dashboard'>BlogAboutYourDay</Link>
-  } else {
-    store.dispatch(logout());
-
-    loginButtonToggle = <Login color="inherit" />
-    homeButtonToggle = <Link to='/'>BlogAboutYourDay</Link>
-  }
-});
-
-export default function ButtonAppBar() {
+const Header = (uid) => {
   const classes = useStyles();
+  console.log(uid);
 
   return (
     <div className={classes.root}>
@@ -61,7 +45,7 @@ export default function ButtonAppBar() {
               <Comment />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-            { homeButtonToggle}
+            {uid ? <Link to='/dashboard'>BlogAboutYourDay</Link> : <Link to='/'>BlogAboutYourDay</Link>}
             </Typography>
 
           <a href="https://www.linkedin.com/in/junejungjunejung/" target="_blank" rel="noopener noreferrer">
@@ -75,11 +59,18 @@ export default function ButtonAppBar() {
               <GitHub />
             </IconButton>
           </a>
-
+          
           <Divider orientation="vertical" flexItem />
-          { loginButtonToggle}
+          {uid ? <Logout color="inherit" /> : <Login color="inherit" />}
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+
+
+const mapStateToProps = (state) => ({
+  uid: !!state.auth.uid
+});
+
+export default connect(mapStateToProps)(Header);

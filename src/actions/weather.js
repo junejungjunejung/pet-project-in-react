@@ -1,8 +1,20 @@
 import { useEffect, useState }from 'react';
 import axios from 'axios';
-//change this to store (action, reducer)
-//so i can bring state and use it at app router backgroundimage
 
+export const getWeather = (weather) => ({
+  type: 'GET_WEATHER',
+  weather
+});
+
+export const startGetWeather = () => {
+  return () => {
+    return "bgiWeatherDescription";
+  };
+};
+
+
+//change this to redux store (action)
+//so i can bring state and use it at app router backgroundimage
 export const useWeatherApi = () => {
   const [forecast, setForecast] = useState('');
   const [search, setSearch] = useState('');

@@ -49,9 +49,9 @@ const devTools = [
     url: 'https://thecatapi.com/'
   },
   {
-    name: 'Cat Facts',
+    name: 'Meow Facts',
     id:7,
-    url: 'https://cat-fact.herokuapp.com/#/'
+    url: 'https://github.com/wh-iterabb-it/meowfacts'
   },
   {
     name: 'Figma',

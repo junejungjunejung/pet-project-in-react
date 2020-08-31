@@ -28,9 +28,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//Getting error!!! Fix it
-//Access to XMLHttpRequest at 'https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
-
 export default function CatFacts() {
   const classes = useStyles();
   
@@ -46,10 +43,10 @@ export default function CatFacts() {
 
     try {
       const [resOne, resTwo] = await axios.all([
-        axios.get('https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1'),
+        axios.get('https://meowfacts.herokuapp.com/'),
         axios.get('https://api.thecatapi.com/v1/images/search')
       ]);
-      setText(resOne.data.text);
+      setText(resOne.data.data[0]);
       setImage(resTwo.data[0].url);
     } catch (error){
       setIsError(true);
