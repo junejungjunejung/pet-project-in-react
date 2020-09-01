@@ -35,13 +35,15 @@ firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
     store.dispatch(startSetPosts()).then(() => {
-      renderApp();
+      localStorage.setItem('loggedIn','user');
       history.push('/dashboard');
+      renderApp();
     });
   } else {
     store.dispatch(logout());
-    renderApp();
+    localStorage.setItem('loggedIn', 'noUser');
     history.push('/');
+    renderApp();
   }
 });
 

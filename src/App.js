@@ -44,6 +44,7 @@ const App = () => {
     console.log(err)
   });
 
+
 return (
   <BrowserRouter history={history}>
     <div>

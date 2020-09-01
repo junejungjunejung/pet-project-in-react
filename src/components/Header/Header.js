@@ -1,12 +1,8 @@
 import React from 'react';
 import Login from './Login';
 import Logout from './Logout';
-import { firebase } from '../../firebase/firebase';
-import { login, logout } from '../../actions/auth';
-
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import withStyles from '@material-ui/core/styles/withStyles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
@@ -15,7 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import { Comment, GitHub, LinkedIn } from '@material-ui/icons';
 import Divider from '@material-ui/core/Divider';
 
-const useStyles = makeStyles((theme) => ({
+const styles  = (theme) => ({
   root: {
     display: 'flex',
   },
@@ -28,24 +24,42 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-}));
+});
 
-// need to auto toggle login/out buttons
-//maybe use useEffect hook(=componentDidUpdate) for subscribing changes
+// need to auto refresh 
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
 
-const Header = (uid) => {
-  const classes = useStyles();
-  console.log(uid);
+    this.state = {
+      log: localStorage.getItem('loggedIn'),
+    };
+  }
 
-  return (
-    <div className={classes.root}>
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.log !== this.state.log) {
+      this.setState({ state: this.state });
+    }
+  }
+
+  render(){
+    const { classes } = this.props;
+
+    const logout = <Logout color="inherit" />;
+    const login = <Login color="inherit" />;
+
+    return (
+      <div className={classes.root}>
       <AppBar position="sticky" color="default" className={classes.appBar}>
         <Toolbar>
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
               <Comment />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-            {uid ? <Link to='/dashboard'>BlogAboutYourDay</Link> : <Link to='/'>BlogAboutYourDay</Link>}
+              <Link to='/'>BlogAboutYourDay</Link>
+            </Typography>
+            <Typography variant="subtitle1" className={classes.title}>
+              {this.state.log !== 'noUser' && <Link to='/dashboard'>Dashboard</Link>}
             </Typography>
 
           <a href="https://www.linkedin.com/in/junejungjunejung/" target="_blank" rel="noopener noreferrer">
@@ -59,18 +73,14 @@ const Header = (uid) => {
               <GitHub />
             </IconButton>
           </a>
-          
+
           <Divider orientation="vertical" flexItem />
-          {uid ? <Logout color="inherit" /> : <Login color="inherit" />}
+          { this.state.log !== 'noUser' ? logout : login }
         </Toolbar>
       </AppBar>
     </div>
-  );
+    )
+  }
 }
 
-
-const mapStateToProps = (state) => ({
-  uid: !!state.auth.uid
-});
-
-export default connect(mapStateToProps)(Header);
+export default withStyles(styles)(Header);
