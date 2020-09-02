@@ -8,8 +8,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
-//import { catFact, catPicture } from '../../actions/cat';
-
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({

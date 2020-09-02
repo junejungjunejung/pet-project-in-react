@@ -23,23 +23,21 @@ export default function Sidebar() {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
-      <Container>
-        <Drawer
-          className={classes.drawer}
-          variant="permanent"
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <Toolbar />
-          <div className={classes.drawerContainer}>
-            <WeatherInfo className={classes.content} />
-            <CatFacts className={classes.content} />
-          </div>
-        </Drawer>
-      </Container>
-    </React.Fragment>
+    <Container>
+      <Drawer
+        className={classes.drawer}
+        variant="permanent"
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
+        <Toolbar />
+        <div className={classes.drawerContainer}>
+          <WeatherInfo className={classes.content} />
+          <CatFacts className={classes.content} />
+        </div>
+      </Drawer>
+    </Container>
   );
 }
 
