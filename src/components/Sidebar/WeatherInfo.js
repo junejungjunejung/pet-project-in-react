@@ -76,6 +76,8 @@ class WeatherInfo extends React.Component {
   };
 
   render(){
+    const weatherInfo = this.props.weather
+
     return (
       <div className = 'sidebar_weather_info'>
         <Typography variant="h5" component="h2">Weather Information</Typography>
@@ -90,19 +92,24 @@ class WeatherInfo extends React.Component {
             name = "location"
             placeholder="Search a location" 
             variant="outlined" 
-            value={this.state.location} 
+            value={this.state.location}
             onChange={e => this.setState({location : e.target.value})}
           />
           <Button type="submit" variant="outlined" color="primary">Click Here !</Button>
         </form>
                 
-          {this.props.weather.isLoading && <p>Loading...</p>}
-          {(this.state.location && this.props.weather.isError) &&<p> Try another search </p>}
+          {weatherInfo.isLoading && <p>Loading...</p>}
+          {(this.state.location && weatherInfo.isError) &&<p> Try another search </p>}
 
           <Typography variant="h6">See weather information</Typography>
-          {!this.state.location || this.props.weather.isError ? 
-            <Typography variant="body1" component="p" gutterBottom>Back ground image of the right side will change based on the location you input in the form above.</Typography>: console.log(this.props.weather.weather)//??????why
-            }
+          {!this.state.location || weatherInfo.isError || (Object.keys(weatherInfo).length === 0)? 
+            <Typography variant="body1" component="p" gutterBottom>
+            Back ground image of the right side will change based on the location you input in the form above.
+            </Typography>: 
+            <div>
+              <Typography>{this.state.location}</Typography>
+              <Typography>{weatherInfo.forecast}</Typography>
+            </div>}
         </Grid>
       </div>
     );
@@ -110,7 +117,7 @@ class WeatherInfo extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  weather: state.weather
+  weather: {...state.weather.weather}
 });
 
 const mapDispatchToProps = (dispatch) => ({

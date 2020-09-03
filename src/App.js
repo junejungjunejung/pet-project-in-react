@@ -1,6 +1,6 @@
 import React, { useState }from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
+import { useSelector } from "react-redux";
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Footer from './components/Footer/Footer';
@@ -33,24 +33,35 @@ const unsplash = new Unsplash({
 });
 
 const App = () => {
+  const weather = useSelector(state => ({...state.weather.weather}));
+  const weatherQuery = `${weather.bgiTime} ${weather.bgiWeather}`
   const classes = useStyles();
   const [bgi, setBgi] = useState('');
 
-  unsplash.search.photos("cloudy sky", 1, 1, { orientation: "landscape" })
-  .then(toJson)
-  .then(json => {
-    setBgi(json.results[0].urls.regular)
-  }).catch(err => {
-    console.log(err)
-  });
-
+  if((Object.keys(weather).length === 0)){
+    unsplash.search.photos('sunny sky', 1, 1, { orientation: "landscape" })
+    .then(toJson)
+    .then(json => {
+      setBgi(json.results[0].urls.regular)
+    }).catch(err => {
+      console.log(err)
+    });
+  }else{
+    unsplash.search.photos(weatherQuery, 1, 1, { orientation: "landscape" })
+    .then(toJson)
+    .then(json => {
+      setBgi(json.results[0].urls.regular)
+    }).catch(err => {
+      console.log(err)
+    });
+  }
 
 return (
   <BrowserRouter history={history}>
-    <div>
+    <div style={{background:`url(${bgi}) no-repeat center center fixed`}}>
       <Header />
       <Sidebar />
-      <Container className={classes.main} style={{background:`url(${bgi}) no-repeat center center fixed`}}>
+      <Container className={classes.main} >
         <Switch>
           <Route path="/" component={LandingPage} exact />
           <UserRoute path="/dashboard" component={UserDashboardPage} />
