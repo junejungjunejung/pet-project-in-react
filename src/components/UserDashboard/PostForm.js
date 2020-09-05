@@ -29,19 +29,19 @@ class PostForm extends React.Component {
     super(props);
 
     this.state = {
-      postTitle: props.post ? props.post.postTitle : '',
-      postBody: props.post ? props.post.postBody : '',
+      title: props.post ? props.post.title : '',
+      content: props.post ? props.post.content : '',
       createdAt: props.post ? moment(props.post.createdAt) : moment(),
       error: '',
     };
   }
   onTitleChange = (e) => {
-    const postTitle = e.target.value;
-    this.setState(() => ({ postTitle }));
+    const title = e.target.value;
+    this.setState(() => ({ title }));
   };
   onBodyChange = (e) => {
-    const postBody = e.target.value;
-    this.setState(() => ({ postBody }));
+    const content = e.target.value;
+    this.setState(() => ({ content }));
   };
   onDateChange = (createdAt) => {
     if (createdAt) {
@@ -52,16 +52,15 @@ class PostForm extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     
-    if (!this.state.postTitle) {
+    if (!this.state.title) {
       this.setState(() => ({ error: 'Please provide post title.' }));
     } else {
       this.setState(() => ({ error: '' }));
       this.props.onSubmit({
-        postTitle: this.state.postTitle,
+        title: this.state.title,
         createdAt: this.state.createdAt.valueOf(),
-        postBody: this.state.postBody
+        content: this.state.content
       });
-      console.log(this.state.postTitle)
     }
   };
 
@@ -78,7 +77,7 @@ class PostForm extends React.Component {
               id="outlined-required"
               label="Post Title"
               variant="outlined"
-              value={this.state.postTitle}
+              value={this.state.title}
               onChange={this.onTitleChange}
             />
 
@@ -104,7 +103,7 @@ class PostForm extends React.Component {
               rows={20}
               type="search"
               variant="outlined"
-              value={this.state.postBody}
+              value={this.state.content}
               onChange={this.onBodyChange}
             />
             <Button type="submit" variant="contained" color="primary" disableElevation>Save Post</Button>

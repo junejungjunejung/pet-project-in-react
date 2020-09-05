@@ -35,7 +35,7 @@ const mapStateToProps = (state, props) => ({
   post: state.posts.find((post) => post.id === props.match.params.id)
 });
 
-const mapDispatchToProps = (dispatch, props) => ({
+const mapDispatchToProps = (dispatch) => ({
   startEditPost: (id, post) => dispatch(startEditPost(id, post)),
   startRemovePost: (data) => dispatch(startRemovePost(data))
 });

@@ -6,19 +6,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary">
-      {'Copyright © '}
-      <a color="inherit" href="https://material-ui.com/">
-        Your Website
-      </a>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   footer: {
     padding: theme.spacing(3, 2),
@@ -30,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexFlow: 'row, wrap',
     justifyContent: 'space-between'
+  },
+  copyright: {
+    margin: 0,
   }
 }));
 
@@ -43,7 +33,9 @@ export default function Footer() {
         <BuildTools />
         <ContactForm />
       </Container>
-      <Copyright />
+      <Typography className={classes.copyright} variant="body2" color="textSecondary">
+        {'© '}{new Date().getFullYear()}June Jung June Jung June Jung June Jung June Jung June Jung. 
+      </Typography>
     </footer>
     </React.Fragment>
   );

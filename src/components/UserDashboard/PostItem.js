@@ -15,13 +15,13 @@ const PostItem = (props) => {
   return(
     <div className={classes.root}>
       <Typography gutterBottom variant="h5" component="h2">
-        {props.post.postTitle}
+        {props.post.title}
       </Typography>
       <Typography variant="body1" color="textSecondary" component="p">
         {moment(props.post.createdAt).format('MMMM Do, YYYY')}
       </Typography>
       <Typography variant="body2" color="textSecondary" component="p">
-        {props.post.postBody}
+        {props.post.content}
       </Typography>
     </div>
   )

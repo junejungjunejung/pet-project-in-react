@@ -9,7 +9,6 @@ export class CreatePost extends React.Component {
   onSubmit = (post) => {
     this.props.startAddPost(post);
     this.props.history.push('/dashboard');
-    console.log(post)
   };
 
   render() {

@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PostSummary from './PostSummary';
+import selectPosts from '../../selectors/posts';
 
+
+//dosn't auto render post lists after filter updated state(state is working).
 const PostList = (props) => {
   return (
     <div className="list-body">
@@ -22,7 +25,7 @@ const PostList = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.posts
+    posts: selectPosts(state.posts, state.filters)
   };
 };
 
