@@ -1,10 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PostSummary from './PostSummary';
-import selectPosts from '../../selectors/posts';
 
-
-//dosn't auto render post lists after filter updated state(state is working).
 const PostList = (props) => {
   return (
     <div className="list-body">
@@ -14,7 +10,10 @@ const PostList = (props) => {
             <span>No post</span>
           </div>
         ) : (
-            props.posts.map((post) => {
+            props.posts
+            //visible posts based on pagination
+            .slice((props.page - 1) * props.itemsPerPage, props.page * props.itemsPerPage)
+            .map((post) => {
               return <PostSummary key={post.id} {...post} />;
             })
           )
@@ -23,10 +22,6 @@ const PostList = (props) => {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    posts: selectPosts(state.posts, state.filters)
-  };
-};
 
-export default connect(mapStateToProps)(PostList);
+
+export default PostList;

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { startRemovePost, startEditPost} from '../../actions/post';
 import PostForm from './PostForm';
 import Button from '@material-ui/core/Button';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { Link } from 'react-router-dom';
 
 export class EditPost extends React.Component {
@@ -17,7 +18,7 @@ export class EditPost extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Link to="/dashboard"> Back to dashboard </Link>
+        <Link to="/dashboard"> <ArrowBackIcon /> Back to dashboard </Link>
         <div>
           <PostForm
             post={this.props.post}

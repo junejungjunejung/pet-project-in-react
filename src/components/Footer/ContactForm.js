@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -8,12 +7,17 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  form: {
     '& > *': {
       margin: theme.spacing(1),
       width: '25ch',
     },
   },
+  message: {
+    '& > *': {
+      width: '50ch',
+    },
+  }
 }));
 
 export default function ContactForm() {
@@ -34,6 +38,7 @@ export default function ContactForm() {
     }
   };
 
+  //contact form via formspree
   const handleOnSubmit = e => {
     e.preventDefault();
     const form = e.target;
@@ -57,25 +62,28 @@ export default function ContactForm() {
         container
         direction="column"
         justify="center"
-        alignItems="center"
+        alignItems="flex-start"
       >
         <Typography>
           Hi, I'm June.<br/>
           A Front-end developer & UX/UI designer
           based in Vancouver, Canada.
         </Typography>
-        <form className={classes.root} noValidate autoComplete="off" onSubmit={handleOnSubmit}>
-          <TextField id="name" label="Name" />
-          <TextField id="email" label="Email" />
-          <Grid item xs={12}>
+
+        <form className={classes.form} noValidate autoComplete="off" onSubmit={handleOnSubmit}>
+          <div>
+            <TextField id="name" label="Name" variant="outlined"/>
+            <TextField id="email" label="Email" variant="outlined"/>
             <TextField 
+              className={classes.message}
               id="message" 
               label="Message" 
               name="message"
+              variant="outlined"
               multiline
               rows={4}
             />
-          </Grid>
+          </div> 
           <Button variant="outlined" type="submit" disabled={serverState.submitting}>Let’s have a convo !</Button>
           {serverState.status && (
             <p className={!serverState.status.ok ? "errorMsg" : ""}>

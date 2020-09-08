@@ -4,17 +4,8 @@ import ReadMeItem from './ReadMeItem';
 import Toolbar from '@material-ui/core/Toolbar';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-  },
-}));
 
 const LandingPage = () => {
-  const classes = useStyles();
-
   return (
     <React.Fragment>
       <Container>

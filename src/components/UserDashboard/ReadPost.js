@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PostItem from './PostItem';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const ReadPost = (props) => {
   return (
     <React.Fragment>
-      <Link to="/dashboard"> Back to dashboard </Link>
+      <Link to="/dashboard"> <ArrowBackIcon /> Back to dashboard </Link>
       <PostItem post={props.post}/>
     </React.Fragment>
   );

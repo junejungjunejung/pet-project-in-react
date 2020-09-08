@@ -21,13 +21,16 @@ import { Container } from '@material-ui/core';
 export const history = createBrowserHistory();
 
 const useStyles = makeStyles(() => ({
+  root: {
+    height: 'calc(100vh)',
+  },
   main: {
     marginLeft: 300,
     width: '100%',
     backgroundSize: 'cover'
   }
 }));
-
+//need to hide the key from github
 const unsplash = new Unsplash({
   accessKey: "",
 });
@@ -37,20 +40,27 @@ const App = () => {
   const weatherQuery = `${weather.bgiTime} ${weather.bgiWeather}`
   const classes = useStyles();
   const [bgi, setBgi] = useState('');
+  const [credit, setCredit] =useState('');
+  const [creditLink, setCreditLink] =useState('');
 
-  if((Object.keys(weather).length === 0)){
+  //getting interactive background image from unsplash api (using weather info state)
+  if((Object.keys(weather).length === 0)){//default image
     unsplash.search.photos('sunny sky', 1, 1, { orientation: "landscape" })
     .then(toJson)
     .then(json => {
       setBgi(json.results[0].urls.regular)
+      setCredit(json.results[0].user.name)
+      setCreditLink(json.results[0].user.links.photos)
     }).catch(err => {
       console.log(err)
     });
-  }else{
+  }else{//image set by weather information button click
     unsplash.search.photos(weatherQuery, 1, 1, { orientation: "landscape" })
     .then(toJson)
     .then(json => {
       setBgi(json.results[0].urls.regular)
+      setCredit(json.results[0].user.name)
+      setCreditLink(json.results[0].user.links.photos)
     }).catch(err => {
       console.log(err)
     });
@@ -58,10 +68,11 @@ const App = () => {
 
 return (
   <BrowserRouter history={history}>
-    <div style={{background:`url(${bgi}) no-repeat center center fixed`}}>
+    <div className={classes.root} style={{background:`url(${bgi}) no-repeat center center fixed`}}>
       <Header />
       <Sidebar />
       <Container className={classes.main} >
+        <p>photo by <a href={creditLink}>{credit}</a>/<a href="https://unsplash.com/">Unsplash</a></p>
         <Switch>
           <Route path="/" component={LandingPage} exact />
           <UserRoute path="/dashboard" component={UserDashboardPage} />

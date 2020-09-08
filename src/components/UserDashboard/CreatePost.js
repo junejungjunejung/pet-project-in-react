@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PostForm from './PostForm';
 import { startAddPost } from '../../actions/post';
-
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { Link } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
 
 export class CreatePost extends React.Component {
   onSubmit = (post) => {
@@ -14,13 +15,9 @@ export class CreatePost extends React.Component {
   render() {
     return (
       <div>
-        <div className="page-header">
-          <div className="content-container">
-            <h1 className="page-header__title">Create New Post </h1>
-          </div>
-        </div>
+        <Typography variant="h4" gutterBottom> Create New Post </Typography>
         <div className="content-container">
-          <Link to="/dashboard" >Back to Dashboard</Link>
+          <Link to="/dashboard"> <ArrowBackIcon /> Back to Dashboard</Link>
           <PostForm
             onSubmit={this.onSubmit}
           />

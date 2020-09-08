@@ -1,15 +1,15 @@
 import React from 'react';
 import BuildTools from './BuildTools';
 import ContactForm from './ContactForm';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    padding: theme.spacing(3, 2),
+    display: 'flex',
     marginTop: 'auto',
+    flexFlow: 'column',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
   },
@@ -19,24 +19,23 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between'
   },
   copyright: {
-    margin: 0,
+    justifyContent: "center",
   }
 }));
 
 export default function Footer() {
   const classes = useStyles();
-
   return (
     <React.Fragment>
       <footer className={classes.footer}>
-      <Container className={classes.container} >
-        <BuildTools />
-        <ContactForm />
-      </Container>
-      <Typography className={classes.copyright} variant="body2" color="textSecondary">
-        {'© '}{new Date().getFullYear()}June Jung June Jung June Jung June Jung June Jung June Jung. 
-      </Typography>
-    </footer>
+        <Container className={classes.container} >
+          <BuildTools />
+          <ContactForm />
+        </Container>
+        <Typography className={classes.copyright} variant="body2" color="textSecondary">
+          {'© '}{new Date().getFullYear()} June Jung. 
+        </Typography>
+      </footer>
     </React.Fragment>
   );
 }
