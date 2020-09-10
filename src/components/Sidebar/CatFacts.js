@@ -1,19 +1,23 @@
 import React, { useState, useCallback }from 'react';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-
+import cat from '../../image/cat-solid.svg';
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     maxWidth: 300,
+  },
+  header: {
+    display: 'flex',
+  },
+  icon: {
+    height: '2rem', 
   },
   button: {
     '& > *': {
@@ -54,12 +58,15 @@ export default function CatFacts() {
   },[isSending]);
 
   return (
-    <React.Fragment>
-      <Card className={classes.root} variant="outlined">
+    <div className={classes.root} >
+      <div className={classes.header}>
+        <img src={cat} className={classes.icon} alt="cat icon"/>
         <Typography variant="h5" component="h2">
           Daily dose of Cat facts
         </Typography>
+      </div>
 
+      <div className="sidebar-layout-toggle">
         <CardMedia
           className={classes.media}
           image={ image }
@@ -77,7 +84,7 @@ export default function CatFacts() {
             Check other facts !
           </Button>
         </CardActions>
-      </Card>
-    </React.Fragment>
+      </div>
+    </div>
   );
 }

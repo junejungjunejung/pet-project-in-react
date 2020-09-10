@@ -9,10 +9,12 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 const useStyles = makeStyles((theme) => ({
   list: {
-    display: 'flex',
-    flexFlow: 'column wrap',
-    justifyContent: 'space-around',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
     height: 200
+  },
+  item: {
+    justifySelf: 'start',
   },
 }));
 
@@ -25,11 +27,12 @@ export default function BuildTools() {
       direction="column"
       justify="center"
       alignItems="flex-start"
+      className="footer-build-tools"
     >
       <Typography> This website is built with, </Typography>
       <List className={classes.list}>
         {devTools.map((devTool) => (
-          <ListItem button key={devTool.id}>
+          <ListItem button key={devTool.id} className={classes.item}>
             <FiberManualRecordIcon />
             <a href={devTool.url} target="_blank" rel="noopener noreferrer">
               <ListItemText primary={devTool.name} />

@@ -16,20 +16,21 @@ import { createBrowserHistory } from 'history';
 import Unsplash, { toJson } from 'unsplash-js';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Container } from '@material-ui/core';
 
 export const history = createBrowserHistory();
 
 const useStyles = makeStyles(() => ({
-  root: {
-    height: 'calc(100vh)',
+ root: {
+    margin: 'auto',
+    backgroundSize: 'cover',
+    overflow: 'hidden'
   },
-  main: {
-    marginLeft: 300,
-    width: '100%',
-    backgroundSize: 'cover'
+  credit: {
+    margin: '0 1.5rem 0 0',
+    textAlign: 'right'
   }
 }));
+
 //need to hide the key from github
 const unsplash = new Unsplash({
   accessKey: "",
@@ -48,9 +49,10 @@ const App = () => {
     unsplash.search.photos('sunny sky', 1, 1, { orientation: "landscape" })
     .then(toJson)
     .then(json => {
-      setBgi(json.results[0].urls.regular)
+      setBgi(json.results[0].urls.full)
       setCredit(json.results[0].user.name)
       setCreditLink(json.results[0].user.links.photos)
+      console.log(json.results[0])
     }).catch(err => {
       console.log(err)
     });
@@ -58,7 +60,7 @@ const App = () => {
     unsplash.search.photos(weatherQuery, 1, 1, { orientation: "landscape" })
     .then(toJson)
     .then(json => {
-      setBgi(json.results[0].urls.regular)
+      setBgi(json.results[0].urls.full)
       setCredit(json.results[0].user.name)
       setCreditLink(json.results[0].user.links.photos)
     }).catch(err => {
@@ -71,8 +73,7 @@ return (
     <div className={classes.root} style={{background:`url(${bgi}) no-repeat center center fixed`}}>
       <Header />
       <Sidebar />
-      <Container className={classes.main} >
-        <p>photo by <a href={creditLink}>{credit}</a>/<a href="https://unsplash.com/">Unsplash</a></p>
+      <div id="main-layout" >
         <Switch>
           <Route path="/" component={LandingPage} exact />
           <UserRoute path="/dashboard" component={UserDashboardPage} />
@@ -81,7 +82,8 @@ return (
           <UserRoute path="/edit/:id" component={EditPost} />
           <Route component={NotFoundPage} />
         </Switch>
-      </Container>
+      </div>
+      <p  className={classes.credit} >photo by <a href={creditLink}>{credit}</a>/<a href="https://unsplash.com/">Unsplash</a></p>
       <Footer />
     </div>
   </BrowserRouter>

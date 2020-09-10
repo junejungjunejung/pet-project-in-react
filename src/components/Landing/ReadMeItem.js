@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
+
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -41,13 +42,12 @@ const ReadMeItem = () => {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography className={classes.heading}>General settings</Typography>
+          <Typography className={classes.heading}>Read Me</Typography>
           <Typography className={classes.secondaryHeading}>I am an accordion</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat. Aliquam eget
-            maximus est, id dignissim quam.
+            Once you sign in with Google, you will be directed to the user dashboard and you can create, read, update, and delete posts.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -57,15 +57,14 @@ const ReadMeItem = () => {
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
-          <Typography className={classes.heading}>Users</Typography>
+          <Typography className={classes.heading}>Weather information</Typography>
           <Typography className={classes.secondaryHeading}>
             You are currently not an owner
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar
-            diam eros in elit. Pellentesque convallis laoreet laoreet.
+            By submitting a location you want to look up the weather for, will fetch current weather forecast JSON data from the ‘Weatherstack’ REST API. Part of his string information will then be filtered to be used fetching an image that corresponds to the current weather from ‘Unsplash’ JSON API. That will change the background image of the website.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -75,15 +74,14 @@ const ReadMeItem = () => {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Typography className={classes.heading}>Advanced settings</Typography>
+          <Typography className={classes.heading}>Daily dose of Cat facts</Typography>
           <Typography className={classes.secondaryHeading}>
             Filtering has been entirely disabled for whole web server
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros,
-            vitae egestas augue. Duis vel est augue.
+            When you click the button, this will make chained API calls to ‘TheCatApi’ for a random cat image and to ‘Meow Facts’ for a random cat fact. If one of two API isn’t reachable, the component will display the default image and data. 
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -93,12 +91,11 @@ const ReadMeItem = () => {
           aria-controls="panel4bh-content"
           id="panel4bh-header"
         >
-          <Typography className={classes.heading}>Personal data</Typography>
+          <Typography className={classes.heading}>About June</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros,
-            vitae egestas augue. Duis vel est augue.
+          I'm from Korea, and I enjoy developing & designing Web solutions. I love symmetry, balance and collecting postcards from art museums. I also enjoy making things like knitted scarfs to websites.
           </Typography>
         </AccordionDetails>
       </Accordion>

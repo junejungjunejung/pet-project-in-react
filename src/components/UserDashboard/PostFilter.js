@@ -16,12 +16,12 @@ export class PostFilter extends React.Component {
   };
   render() {
     return (
-      <FormControl variant="outlined">
+      <FormControl variant="outlined" >
         <InputLabel htmlFor="outlined-age-native-simple">SortBy</InputLabel>
           <Select
-            className="select"
             value={this.props.filters.sortBy}
             onChange={this.onSortChange}
+            className="post-list-filter"
           >
             <MenuItem value="date">Date</MenuItem>
             <MenuItem value="title">Title</MenuItem>

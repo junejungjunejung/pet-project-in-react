@@ -9,19 +9,21 @@ import '../../styles/styles.css';
 import axios from 'axios';
 
 import { startGetWeather } from '../../actions/weather';
+import weather from '../../image/cloud-sun-solid.svg';
+import { withStyles } from '@material-ui/core/styles';
 
-// const styles  = (theme) => ({
-//   root: {
-//     width: '100%',
-//     maxWidth: 300,
-//   },
-//   form: {
-//     '& > *': {
-//       margin: theme.spacing(1),
-//       width: '25ch',
-//     },
-//   }
-// });
+const styles = {
+  sidebar: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  header: {
+    display: 'flex',
+  },
+  icon: {
+    height: '2rem'
+  },
+};
 
 class WeatherInfo extends React.Component {
   constructor() {
@@ -32,7 +34,7 @@ class WeatherInfo extends React.Component {
   state = {
     location: '',
   };
-
+  //sending request to weather stack api
   onSubmit = (e) => {
     e.preventDefault();
     let forecast, isLoading, isError, bgiTime, bgiWeather, weather, isDay;
@@ -49,6 +51,7 @@ class WeatherInfo extends React.Component {
         weather = res.data.current.weather_descriptions[0].toLowerCase();
         isDay = res.data.current.is_day;
 
+        //simplifying weather description to use it as Unsplash query
         if(weather.includes('sun')){
           bgiWeather='sunny'
         }else if(weather.includes('cloud')){
@@ -58,7 +61,7 @@ class WeatherInfo extends React.Component {
         }else if(weather.includes('clear')){
           bgiWeather='clear'
         }
-
+        //getting localized time from weatherstack to use is as Unsplash query
         if(isDay === 'no'){
           bgiTime='night'
         } else {
@@ -77,40 +80,40 @@ class WeatherInfo extends React.Component {
 
   render(){
     const weatherInfo = this.props.weather
-
+    const {classes} = this.props;
     return (
-      <div className = 'sidebar_weather_info'>
-        <Typography variant="h5" component="h2">Weather Information</Typography>
-        <Grid
-          container
-          direction="column"
-          justify="center"
-          alignItems="center"
-        >
-        <form onSubmit={this.onSubmit}>
-          <TextField 
-            name = "location"
-            placeholder="Search a location" 
-            variant="outlined" 
-            value={this.state.location}
-            onChange={e => this.setState({location : e.target.value})}
-          />
-          <Button type="submit" variant="outlined" color="primary">Click Here !</Button>
-        </form>
+      <div className = "sidebar-weather-info">
+        <div className={classes.header}>
+          <img src={weather} className={classes.icon} alt="weather icon"/>
+          <Typography variant="h5" component="h2">Weather Information</Typography>
+        </div>
+
+        <div className={`sidebar-layout-toggle ${classes.sidebar}`}>
+          <form onSubmit={this.onSubmit}>
+            <TextField 
+              name = "location"
+              placeholder="Search a location" 
+              variant="outlined" 
+              value={this.state.location}
+              onChange={e => this.setState({location : e.target.value})}
+            />
+            <Button type="submit" variant="outlined" color="primary">Click Here !</Button>
+          </form>
                 
           {weatherInfo.isLoading && <p>Loading...</p>}
           {(this.state.location && weatherInfo.isError) &&<p> Try another search </p>}
 
           <Typography variant="h6">See weather information</Typography>
+          
           {!this.state.location || weatherInfo.isError || (Object.keys(weatherInfo).length === 0)? 
             <Typography variant="body1" component="p" gutterBottom>
             Back ground image of the right side will change based on the location you input in the form above.
             </Typography>: 
             <div>
-              <Typography>{this.state.location}</Typography>
-              <Typography>{weatherInfo.forecast}</Typography>
+              <Typography variant="body1" component="p" >{this.state.location}</Typography>
+              <Typography variant="body1" component="p" gutterBottom>{weatherInfo.forecast}</Typography>
             </div>}
-        </Grid>
+        </div>
       </div>
     );
   }
@@ -124,4 +127,4 @@ const mapDispatchToProps = (dispatch) => ({
   startGetWeather: (value) => dispatch(startGetWeather(value))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(WeatherInfo);
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(WeatherInfo));
