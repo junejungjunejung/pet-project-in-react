@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
@@ -17,16 +16,15 @@ export class PostFilter extends React.Component {
   render() {
     return (
       <FormControl variant="outlined" >
-        <InputLabel htmlFor="outlined-age-native-simple">SortBy</InputLabel>
-          <Select
-            value={this.props.filters.sortBy}
-            onChange={this.onSortChange}
-            className="post-list-filter"
-          >
-            <MenuItem value="date">Date</MenuItem>
-            <MenuItem value="title">Title</MenuItem>
-          </Select>
-          </FormControl>
+        <Select
+          value={this.props.filters.sortBy}
+          onChange={this.onSortChange}
+          className="post-list-filter"
+        >
+          <MenuItem value="date">Date</MenuItem>
+          <MenuItem value="title">Title</MenuItem>
+        </Select>
+      </FormControl>
     );
   }
 };

@@ -4,33 +4,24 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Grid } from '@material-ui/core';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 const useStyles = makeStyles((theme) => ({
-  list: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
-    height: 200
-  },
   item: {
     justifySelf: 'start',
   },
+  text: {
+    paddingLeft: '1rem'
+  }
 }));
 
 export default function BuildTools() {
   const classes = useStyles();
 
   return (
-    <Grid
-      container
-      direction="column"
-      justify="center"
-      alignItems="flex-start"
-      className="footer-build-tools"
-    >
-      <Typography> This website is built with, </Typography>
-      <List className={classes.list}>
+    <div id="build-tools">
+      <Typography className={classes.text}> This website is built with, </Typography>
+      <List className={`build-tools-layout`}>
         {devTools.map((devTool) => (
           <ListItem button key={devTool.id} className={classes.item}>
             <FiberManualRecordIcon />
@@ -40,8 +31,8 @@ export default function BuildTools() {
           </ListItem>
         ))}
       </List>
-      <Typography> and more... </Typography>
-    </Grid>
+      <Typography className={classes.text}> and more... </Typography>
+    </div>
   );
 }
 

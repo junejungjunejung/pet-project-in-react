@@ -20,11 +20,6 @@ import { makeStyles } from '@material-ui/core/styles';
 export const history = createBrowserHistory();
 
 const useStyles = makeStyles(() => ({
- root: {
-    margin: 'auto',
-    backgroundSize: 'cover',
-    overflow: 'hidden'
-  },
   credit: {
     margin: '0 1.5rem 0 0',
     textAlign: 'right'
@@ -46,18 +41,18 @@ const App = () => {
 
   //getting interactive background image from unsplash api (using weather info state)
   if((Object.keys(weather).length === 0)){//default image
-    unsplash.search.photos('sunny sky', 1, 1, { orientation: "landscape" })
+    unsplash.search.photos('sky', 1, 1, { orientation: "portrait" })
     .then(toJson)
     .then(json => {
       setBgi(json.results[0].urls.full)
       setCredit(json.results[0].user.name)
       setCreditLink(json.results[0].user.links.photos)
-      console.log(json.results[0])
+      console.log(json.results[0].urls)
     }).catch(err => {
       console.log(err)
     });
   }else{//image set by weather information button click
-    unsplash.search.photos(weatherQuery, 1, 1, { orientation: "landscape" })
+    unsplash.search.photos(weatherQuery, 1, 1, { orientation: "portrait" })
     .then(toJson)
     .then(json => {
       setBgi(json.results[0].urls.full)
@@ -70,7 +65,7 @@ const App = () => {
 
 return (
   <BrowserRouter history={history}>
-    <div className={classes.root} style={{background:`url(${bgi}) no-repeat center center fixed`}}>
+    <div className={classes.root} style={{background:`url(${bgi}) repeat-y center/100% fixed`}}>
       <Header />
       <Sidebar />
       <div id="main-layout" >

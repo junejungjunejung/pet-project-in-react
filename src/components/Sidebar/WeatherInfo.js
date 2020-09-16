@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
 import '../../styles/styles.css';
 import axios from 'axios';
 
@@ -16,13 +15,39 @@ const styles = {
   sidebar: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center'
   },
   header: {
     display: 'flex',
+    margin: '.75rem'
   },
   icon: {
     height: '2rem'
   },
+  form: {
+    margin: '.5rem'
+  },
+  input: {
+    width: '250px'
+  },
+  button: {
+    width: '250px',
+    height: '40px',
+    marginBottom: '.5rem'
+  },
+  forecast: {
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    alignItems: 'flex-start',
+    textAlign: 'left',
+    marginLeft: '1rem',
+    marginRight: '.5rem'
+  },
+  instruction: {
+    textAlign: 'left',
+    marginLeft: '.5rem'
+  }
 };
 
 class WeatherInfo extends React.Component {
@@ -33,7 +58,9 @@ class WeatherInfo extends React.Component {
 
   state = {
     location: '',
+    visible: false,
   };
+
   //sending request to weather stack api
   onSubmit = (e) => {
     e.preventDefault();
@@ -60,6 +87,8 @@ class WeatherInfo extends React.Component {
           bgiWeather='rainy'
         }else if(weather.includes('clear')){
           bgiWeather='clear'
+        }else if(weather.includes('smoke')){
+          bgiWeather='smoky weather'
         }
         //getting localized time from weatherstack to use is as Unsplash query
         if(isDay === 'no'){
@@ -78,26 +107,34 @@ class WeatherInfo extends React.Component {
     isLoading=false;
   };
 
+  //toggle weather info in mobile view
+  toggle = () => {
+    if(!this.state.visible) {
+
+    }
+  }
+
   render(){
     const weatherInfo = this.props.weather
     const {classes} = this.props;
     return (
       <div className = "sidebar-weather-info">
-        <div className={classes.header}>
+        <div className={classes.header} onClick={this.toggle}>
           <img src={weather} className={classes.icon} alt="weather icon"/>
           <Typography variant="h5" component="h2">Weather Information</Typography>
         </div>
 
-        <div className={`sidebar-layout-toggle ${classes.sidebar}`}>
-          <form onSubmit={this.onSubmit}>
+        <div className={`sidebar-mobile-hide ${classes.sidebar}`}>
+          <form className={classes.form} onSubmit={this.onSubmit}>
             <TextField 
               name = "location"
               placeholder="Search a location" 
               variant="outlined" 
               value={this.state.location}
               onChange={e => this.setState({location : e.target.value})}
+              className={classes.input}
             />
-            <Button type="submit" variant="outlined" color="primary">Click Here !</Button>
+            <Button className={classes.button} type="submit" variant="outlined" color="primary">Click Here !</Button>
           </form>
                 
           {weatherInfo.isLoading && <p>Loading...</p>}
@@ -106,10 +143,10 @@ class WeatherInfo extends React.Component {
           <Typography variant="h6">See weather information</Typography>
           
           {!this.state.location || weatherInfo.isError || (Object.keys(weatherInfo).length === 0)? 
-            <Typography variant="body1" component="p" gutterBottom>
+            <Typography className={classes.instruction} variant="body1" component="p" gutterBottom>
             Back ground image of the right side will change based on the location you input in the form above.
             </Typography>: 
-            <div>
+            <div className={classes.forecast}>
               <Typography variant="body1" component="p" >{this.state.location}</Typography>
               <Typography variant="body1" component="p" gutterBottom>{weatherInfo.forecast}</Typography>
             </div>}

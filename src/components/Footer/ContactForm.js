@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   button: {
     gridRow: '3',
     gridColumn: '1 / span 2'
+  },
+  text: {
+    paddingLeft: '1rem'
   }
 }));
 
@@ -62,39 +65,32 @@ export default function ContactForm() {
   };
 
   return (
-    <React.Fragment>
-      <Grid
-        container
-        direction="column"
-        justify="center"
-        alignItems="flex-start"
-      >
-        <Typography>
-          Hi, I'm June.<br/>
-          A Front-end developer & UX/UI designer
-          based in Vancouver, Canada.
-        </Typography>
+    <div>
+      <Typography className={classes.text}>
+        Hi, I'm June.<br/>
+        A Front-end developer & UX/UI designer
+        based in Vancouver, Canada.
+      </Typography>
 
-        <form className={classes.form} noValidate autoComplete="off" onSubmit={handleOnSubmit}>
-          <TextField id="name" label="Name" variant="outlined"/>
-          <TextField id="email" label="Email" variant="outlined"/>
-          <TextField 
-            className={classes.message}
-            id="message" 
-            label="Message" 
-            name="message"
-            variant="outlined"
-            multiline
-            rows={4}
-          />
-          <Button className={classes.button} variant="outlined" type="submit" disabled={serverState.submitting}>Let’s have a convo !</Button>
-          {serverState.status && (
-            <p className={!serverState.status.ok ? "errorMsg" : ""}>
-              {serverState.status.msg}
-            </p>
-          )}
-        </form>
-      </Grid>
-    </React.Fragment>
+      <form className={classes.form} noValidate autoComplete="off" onSubmit={handleOnSubmit}>
+        <TextField id="name" label="Name" variant="outlined"/>
+        <TextField id="email" label="Email" variant="outlined"/>
+        <TextField 
+          className={classes.message}
+          id="message" 
+          label="Message" 
+          name="message"
+          variant="outlined"
+          multiline
+          rows={4}
+        />
+        <Button className={classes.button} variant="outlined" type="submit" disabled={serverState.submitting}>Let’s have a convo !</Button>
+        {serverState.status && (
+          <p className={!serverState.status.ok ? "errorMsg" : ""}>
+            {serverState.status.msg}
+          </p>
+        )}
+      </form>
+    </div>
   );
 }

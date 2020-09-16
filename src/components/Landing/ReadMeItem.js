@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    flexBasis: '33.33%',
     flexShrink: 0,
   },
   secondaryHeading: {
@@ -42,8 +41,7 @@ const ReadMeItem = () => {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography className={classes.heading}>Read Me</Typography>
-          <Typography className={classes.secondaryHeading}>I am an accordion</Typography>
+        <Typography className={classes.heading}>Read Me</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -57,10 +55,7 @@ const ReadMeItem = () => {
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
-          <Typography className={classes.heading}>Weather information</Typography>
-          <Typography className={classes.secondaryHeading}>
-            You are currently not an owner
-          </Typography>
+        <Typography className={classes.heading}>Weather information</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -74,10 +69,7 @@ const ReadMeItem = () => {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Typography className={classes.heading}>Daily dose of Cat facts</Typography>
-          <Typography className={classes.secondaryHeading}>
-            Filtering has been entirely disabled for whole web server
-          </Typography>
+        <Typography className={classes.heading}>Daily dose of Cat facts</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>

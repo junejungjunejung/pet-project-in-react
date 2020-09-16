@@ -52,22 +52,22 @@ class Header extends React.Component {
     <AppBar position="sticky" color="default" className={classes.appBar}>
       <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <Comment />
+            <Link to='/'><Comment /></Link>
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" className={`header-title ${classes.title}`}>
             <Link to='/'>BlogAboutYourDay</Link>
           </Typography>
           <Typography id="header-dashboard-link" variant="subtitle1" className={classes.title}>
             {this.state.log !== 'noUser' && <Link to='/dashboard'>Dashboard</Link>}
           </Typography>
 
-        <a href="https://www.linkedin.com/in/junejungjunejung/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/in/junejungjunejung/" className="header-links" target="_blank" rel="noopener noreferrer">
           <IconButton color="inherit">
             <LinkedIn />
           </IconButton>
         </a>
 
-        <a href="https://github.com/junejungjunejung" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/junejungjunejung" className="header-links" target="_blank" rel="noopener noreferrer">
           <IconButton color="inherit">
             <GitHub />
           </IconButton>

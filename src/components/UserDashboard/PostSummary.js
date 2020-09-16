@@ -20,7 +20,7 @@ class PostSummary extends React.Component {
   render() {
     return(
       <Card className="post-summary">
-        <Link to={`/read/${this.props.id}`}>
+        <Link to={`/read/${this.props.id}`} className="post-summary-title">
           <CardActionArea>
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">

@@ -15,18 +15,27 @@ const useStyles = makeStyles((theme) => ({
   },
   header: {
     display: 'flex',
+    margin: '.75rem'
+  },
+  content: {
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   icon: {
     height: '2rem', 
   },
   button: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
+    width: '250px',
+    height: '40px',
   },
   media: {
     height: 300,
+    maxWidth: 300,
+    objectFit: 'cover',
+    padding: '.5rem',
+    borderRadius: '20px'
   },
 }));
 
@@ -66,12 +75,8 @@ export default function CatFacts() {
         </Typography>
       </div>
 
-      <div className="sidebar-layout-toggle">
-        <CardMedia
-          className={classes.media}
-          image={ image }
-          title="dailyKitty"
-        />
+      <div className={`sidebar-mobile-hide ${classes.content}`}>
+        <img src={ image } alt="Cat" className={classes.media}/>
         
         <CardContent>
           <Typography variant="body1" component="p">
@@ -80,7 +85,7 @@ export default function CatFacts() {
         </CardContent>
 
         <CardActions>
-          <Button variant="outlined" size="small" color="primary" disabled={isSending} onClick={fetchData}>
+          <Button className={classes.button} variant="outlined" size="small" color="primary" disabled={isSending} onClick={fetchData}>
             Check other facts !
           </Button>
         </CardActions>

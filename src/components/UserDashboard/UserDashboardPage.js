@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
   },
   pagination: {
     justifyContent: "flex-start",
-    backgroundColor: "white",
   },
 }));
 
@@ -55,7 +54,7 @@ const UserDashboardPage = (props) => {
   return (
     <div id="dashboard-layout">
       <Typography variant="h3" gutterBottom>
-        Hi, { userName }. How’s your day?
+        Hi, { userName }.<br/>How’s your day?
       </Typography>
       <div className={classes.postControl}>
         <PostFilter />
