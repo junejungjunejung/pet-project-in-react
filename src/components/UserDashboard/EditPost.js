@@ -5,6 +5,7 @@ import PostForm from './PostForm';
 import Button from '@material-ui/core/Button';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { Link } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
 
 export class EditPost extends React.Component {
   onSubmit = (post) => {
@@ -17,16 +18,15 @@ export class EditPost extends React.Component {
   };
   render() {
     return (
-      <React.Fragment>
-        <Link to="/dashboard"> <ArrowBackIcon /> Back to dashboard </Link>
-        <div>
-          <PostForm
-            post={this.props.post}
-            onSubmit={this.onSubmit}
-          />
-          <Button variant="contained" color="primary" disableElevation onClick={this.onRemove} >Delete Post</Button>
-        </div>
-      </React.Fragment>
+      <div className="edit-post-layout">
+        <Typography variant="h4" gutterBottom> Edit Post </Typography>
+        <Link className="dashboard-link" to="/dashboard"> <ArrowBackIcon /> Back to dashboard </Link>
+        <PostForm
+          post={this.props.post}
+          onSubmit={this.onSubmit}
+        />
+        <Button variant="contained" color="primary" disableElevation onClick={this.onRemove} >Delete Post</Button>
+      </div>
     );
   }
 }

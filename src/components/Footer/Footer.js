@@ -15,7 +15,7 @@ export default function Footer() {
 
       <div className="footer-links-layout">
         <Typography variant="body2" color="textSecondary">
-        {'© '}{new Date().getFullYear()} June Jung. 
+        This website is built with late night snacks and coffee by me.<br/>{'© '}{new Date().getFullYear()} June Jung
         </Typography>
 
         <a href="https://www.linkedin.com/in/junejungjunejung/" className="footer-links" target="_blank" rel="noopener noreferrer">

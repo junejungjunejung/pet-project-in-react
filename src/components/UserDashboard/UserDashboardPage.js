@@ -16,7 +16,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
   createButton: {
-    color: "white",
+    backgroundColor: '#5EC1E5'
+  },
+  createButtonLink: {
+    color: 'white',
   },
   formControl: {
     margin: theme.spacing(1),
@@ -53,13 +56,13 @@ const UserDashboardPage = (props) => {
 
   return (
     <div id="dashboard-layout">
-      <Typography variant="h3" gutterBottom>
+      <Typography variant="h1" gutterBottom>
         Hi, { userName }.<br/>How’s your day?
       </Typography>
       <div className={classes.postControl}>
         <PostFilter />
         <Button className={classes.createButton} variant="contained" color="primary" disableElevation>
-          <Link  to="/create">
+          <Link  className={classes.createButtonLink} to="/create">
               New Post
           </Link>
         </Button>

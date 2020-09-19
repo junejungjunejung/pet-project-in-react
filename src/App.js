@@ -65,7 +65,7 @@ const App = () => {
 
 return (
   <BrowserRouter history={history}>
-    <div className={classes.root} style={{background:`url(${bgi}) repeat-y center/100% fixed`}}>
+    <div className='background-image-layout' style={{background:`url(${bgi}) repeat-y center/100% fixed`}}>
       <Header />
       <Sidebar />
       <div id="main-layout" >

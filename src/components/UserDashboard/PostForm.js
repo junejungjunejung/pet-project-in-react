@@ -14,10 +14,12 @@ const styles = (theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '100%'
+      width: '100%',
     },
     display: 'flex',
-    flexFlow: 'column nowrap'
+    flexFlow: 'column nowrap',
+    background: 'rgba(255,255,255,0.5)',
+    borderRadius: '10px'
   },
   container: {
     maxWidth: '75ch'
@@ -68,7 +70,6 @@ class PostForm extends React.Component {
     const { classes } = this.props;
 
     return (
-      <React.Fragment>
         <div className={classes.container}>
           <form className={classes.root} onSubmit={this.onSubmit}>
           {this.state.error && <p className="form__error">{this.state.error}</p>}
@@ -108,9 +109,7 @@ class PostForm extends React.Component {
             />
             <Button type="submit" variant="contained" color="primary" disableElevation>Save Post</Button>
           </form>
-         
         </div>
-      </React.Fragment>
     );
   }
 }

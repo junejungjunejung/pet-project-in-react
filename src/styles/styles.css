@@ -1,10 +1,44 @@
-/*----------------------- general styling -----------------------*/
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:700|Roboto:400,700&display=swap');
+
+/*----------------------- typography styling -----------------------*/
+*{
+  color: #002B7F;
+  letter-spacing: 0.1em !important; 
+}
+
 a{
   text-decoration: none;
-  color: #000000;
+  color: #002B7F;
 }
+
 a:active{
   text-decoration: underline;
+}
+
+#logo {
+  height: 2rem;
+}
+
+#logo-text{
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #5EC1E5;
+}
+
+h1{
+  font-size: 24px !important;
+  font-weight: 700 !important;
+}
+
+h2, h3, h4, h5, h6{
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+/*----------------------- web -----------------------*/
+.background-image-layout{
+  min-height: 100vh;
 }
 
 #header-dashboard-link {
@@ -12,13 +46,13 @@ a:active{
   padding-right: .75rem;
 }
 
-/*----------------------- web -----------------------*/
 .sidebar-weather-info {
   max-width: 300px;
 }
 
 #main-layout {
   margin-left: 300px;
+  min-height: 50vh;
   padding: 1.5rem;
 }
 
@@ -90,6 +124,18 @@ a:active{
 
 .post-list-filter {
   background: #ffffff;
+}
+/* create, edit and read post page */
+.create-post-layout, .edit-post-layout, .read-post-layout{
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-post-layout > div, .edit-post-layout > div, .read-post-layout > div{
+  width: 80%;
 }
 
 /*----------------------- responsive -----------------------*/

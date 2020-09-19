@@ -6,10 +6,10 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const ReadPost = (props) => {
   return (
-    <React.Fragment>
-      <Link to="/dashboard"> <ArrowBackIcon /> Back to dashboard </Link>
+    <div className="read-post-layout">
+      <Link className="dashboard-link" to="/dashboard"> <ArrowBackIcon /> Back to dashboard </Link>
       <PostItem post={props.post}/>
-    </React.Fragment>
+    </div>
   );
 }
 

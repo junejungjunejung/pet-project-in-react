@@ -10,11 +10,8 @@ const LandingPage = () => {
     <React.Fragment>
       <Container>
         <Toolbar />
-        <Typography variant="h3" component="h2" gutterBottom>
-          Welcome to BlogAboutYourDay
-        </Typography>
-        <Typography variant="subtitle1" gutterBottom>
-          This is my interactive development portfolio project. Please look around!
+        <Typography component="h1" gutterBottom>
+          Welcome to my interactive development portfolio project.<br />Please look around!
         </Typography>
         <ReadMeItem />
       </Container>

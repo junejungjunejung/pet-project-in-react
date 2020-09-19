@@ -7,16 +7,14 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import { Comment, GitHub, LinkedIn } from '@material-ui/icons';
+import { GitHub, LinkedIn } from '@material-ui/icons';
 import Divider from '@material-ui/core/Divider';
+import logo from '../../image/junejung-logo.svg';
 
 const styles  = (theme) => ({
   appBar: {
     display: 'flex',
     zIndex: theme.zIndex.drawer + 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
@@ -52,10 +50,10 @@ class Header extends React.Component {
     <AppBar position="sticky" color="default" className={classes.appBar}>
       <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <Link to='/'><Comment /></Link>
+            <Link to='/'><img src={logo} alt='logo' id="logo" /></Link>
           </IconButton>
           <Typography variant="h6" className={`header-title ${classes.title}`}>
-            <Link to='/'>BlogAboutYourDay</Link>
+            <Link to='/' id="logo-text">June Jung</Link>
           </Typography>
           <Typography id="header-dashboard-link" variant="subtitle1" className={classes.title}>
             {this.state.log !== 'noUser' && <Link to='/dashboard'>Dashboard</Link>}

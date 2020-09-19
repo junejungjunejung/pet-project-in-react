@@ -14,14 +14,10 @@ export class CreatePost extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="create-post-layout">
         <Typography variant="h4" gutterBottom> Create New Post </Typography>
-        <div className="content-container">
-          <Link to="/dashboard"> <ArrowBackIcon /> Back to Dashboard</Link>
-          <PostForm
-            onSubmit={this.onSubmit}
-          />
-        </div>
+        <Link className="dashboard-link" to="/dashboard"> <ArrowBackIcon /> Back to Dashboard</Link>
+        <PostForm onSubmit={this.onSubmit} />
       </div>
     );
   }

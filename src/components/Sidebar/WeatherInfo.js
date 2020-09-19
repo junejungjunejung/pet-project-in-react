@@ -20,10 +20,12 @@ const styles = {
   },
   header: {
     display: 'flex',
+    justifyContent: 'center',
     margin: '.75rem'
   },
   icon: {
-    height: '2rem'
+    height: '2rem',
+    paddingRight: '.25rem'
   },
   form: {
     margin: '.5rem'
@@ -107,13 +109,6 @@ class WeatherInfo extends React.Component {
     isLoading=false;
   };
 
-  //toggle weather info in mobile view
-  toggle = () => {
-    if(!this.state.visible) {
-
-    }
-  }
-
   render(){
     const weatherInfo = this.props.weather
     const {classes} = this.props;
@@ -121,7 +116,7 @@ class WeatherInfo extends React.Component {
       <div className = "sidebar-weather-info">
         <div className={classes.header} onClick={this.toggle}>
           <img src={weather} className={classes.icon} alt="weather icon"/>
-          <Typography variant="h5" component="h2">Weather Information</Typography>
+          <Typography variant="h6" component="h2">Weather Information</Typography>
         </div>
 
         <div className={`sidebar-mobile-hide ${classes.sidebar}`}>
