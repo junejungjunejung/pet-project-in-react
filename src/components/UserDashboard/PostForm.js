@@ -14,7 +14,6 @@ const styles = (theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '100%',
     },
     display: 'flex',
     flexFlow: 'column nowrap',
@@ -23,7 +22,11 @@ const styles = (theme) => ({
   },
   container: {
     maxWidth: '75ch'
-  }
+  },
+  button: {
+    backgroundColor: '#5EC1E5',
+    border: '1px solid #002B7F',
+  },
 });
 
 class PostForm extends React.Component {
@@ -107,7 +110,7 @@ class PostForm extends React.Component {
               value={this.state.content}
               onChange={this.onBodyChange}
             />
-            <Button type="submit" variant="contained" color="primary" disableElevation>Save Post</Button>
+            <Button className={classes.button} type="submit" variant="contained" color="primary" disableElevation>Save Post</Button>
           </form>
         </div>
     );

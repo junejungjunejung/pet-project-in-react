@@ -5,8 +5,8 @@ import Button from '@material-ui/core/Button';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 export const Logout = ({ startLogout }) => (
-  <Button onClick={startLogout} variant="outlined" color="primary" disableElevation>
-    Logout
+  <Button id="logout" onClick={startLogout} variant="outlined" color="primary" disableElevation>
+    <span>Logout</span>
     <ExitToAppIcon/>
   </Button>
 );

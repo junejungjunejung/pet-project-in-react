@@ -29,6 +29,7 @@ a:active{
 h1{
   font-size: 24px !important;
   font-weight: 700 !important;
+  margin-bottom: 1rem !important;
 }
 
 h2, h3, h4, h5, h6{
@@ -36,6 +37,26 @@ h2, h3, h4, h5, h6{
   font-weight: 700 !important;
 }
 
+.MuiIconButton-root:hover{
+  background-color: transparent !important;
+}
+
+.MuiButton-label:hover{
+  color: white;
+}
+
+#createButton:hover a{
+  color: white;
+}
+
+#deleteButton{
+  background: lightgreen;
+  width: 100%;
+  border: 1px solid #002B7F;
+}
+.edit-post-layout{
+  max-width: 75ch;
+}
 /*----------------------- web -----------------------*/
 .background-image-layout{
   min-height: 100vh;
@@ -44,6 +65,13 @@ h2, h3, h4, h5, h6{
 #header-dashboard-link {
   text-align: right;
   padding-right: .75rem;
+}
+
+#login,#logout,#logo-container{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .sidebar-weather-info {
@@ -101,6 +129,16 @@ h2, h3, h4, h5, h6{
 .footer-links{
   display: none;
 }
+
+/* landing page */
+#landing-layout{
+  max-width: 70%;
+  margin: 0 auto;
+  padding: 1rem;
+  background: rgba(255,255,255,0.5);
+  border-radius: 15px;
+}
+
 /* dashboard post List */
 #dashboard-layout{
   max-width: 70%;
@@ -108,6 +146,18 @@ h2, h3, h4, h5, h6{
   padding: 1rem;
   background: rgba(255,255,255,0.5);
   border-radius: 15px;
+}
+
+.dashboard-link{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.no-list-item{
+  margin: 1rem;
 }
 
 .post-summary {
@@ -134,10 +184,13 @@ h2, h3, h4, h5, h6{
   align-items: center;
 }
 
-.create-post-layout > div, .edit-post-layout > div, .read-post-layout > div{
+.create-post-layout > div, .read-post-layout > div{
   width: 80%;
 }
 
+.edit-post-layout > div{
+  width: 100%;
+}
 /*----------------------- responsive -----------------------*/
 @media (max-width: 1200px) {
   .footer-secondary-layout{

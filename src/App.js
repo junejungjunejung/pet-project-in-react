@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React, { useState, useEffect }from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import Header from './components/Header/Header';
@@ -40,28 +40,29 @@ const App = () => {
   const [creditLink, setCreditLink] =useState('');
 
   //getting interactive background image from unsplash api (using weather info state)
-  if((Object.keys(weather).length === 0)){//default image
-    unsplash.search.photos('sky', 1, 1, { orientation: "portrait" })
-    .then(toJson)
-    .then(json => {
-      setBgi(json.results[0].urls.full)
-      setCredit(json.results[0].user.name)
-      setCreditLink(json.results[0].user.links.photos)
-      console.log(json.results[0].urls)
-    }).catch(err => {
-      console.log(err)
-    });
-  }else{//image set by weather information button click
-    unsplash.search.photos(weatherQuery, 1, 1, { orientation: "portrait" })
-    .then(toJson)
-    .then(json => {
-      setBgi(json.results[0].urls.full)
-      setCredit(json.results[0].user.name)
-      setCreditLink(json.results[0].user.links.photos)
-    }).catch(err => {
-      console.log(err)
-    });
-  }
+  useEffect(() => {
+    if((Object.keys(weather).length === 0)){//default image
+      unsplash.search.photos('sky', 1, 1, { orientation: "portrait" })
+      .then(toJson)
+      .then(json => {
+        setBgi(json.results[0].urls.full)
+        setCredit(json.results[0].user.name)
+        setCreditLink(json.results[0].user.links.photos)
+      }).catch(err => {
+        console.log(err)
+      });
+    }else{//image set by weather information button click
+      unsplash.search.photos(weatherQuery, 1, 1, { orientation: "portrait" })
+      .then(toJson)
+      .then(json => {
+        setBgi(json.results[0].urls.full)
+        setCredit(json.results[0].user.name)
+        setCreditLink(json.results[0].user.links.photos)
+      }).catch(err => {
+        console.log(err)
+      });
+    }
+  });
 
 return (
   <BrowserRouter history={history}>

@@ -16,7 +16,7 @@ export class CreatePost extends React.Component {
     return (
       <div className="create-post-layout">
         <Typography variant="h4" gutterBottom> Create New Post </Typography>
-        <Link className="dashboard-link" to="/dashboard"> <ArrowBackIcon /> Back to Dashboard</Link>
+        <Link className="dashboard-link" to="/dashboard"> <ArrowBackIcon /> <span>Back to dashboard</span></Link>
         <PostForm onSubmit={this.onSubmit} />
       </div>
     );

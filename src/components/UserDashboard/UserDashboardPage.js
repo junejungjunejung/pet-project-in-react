@@ -14,12 +14,18 @@ const useStyles = makeStyles((theme) => ({
   postControl: {
     display: 'flex',
     justifyContent: "space-between",
+    paddingBottom: "1rem",
   },
   createButton: {
-    backgroundColor: '#5EC1E5'
+    backgroundColor: '#5EC1E5',
+    border: '1px solid #002B7F',
   },
   createButtonLink: {
-    color: 'white',
+    color: '#002B7F',
+
+    '&:active': {
+      textDecoration: 'none',
+    },
   },
   formControl: {
     margin: theme.spacing(1),
@@ -61,7 +67,7 @@ const UserDashboardPage = (props) => {
       </Typography>
       <div className={classes.postControl}>
         <PostFilter />
-        <Button className={classes.createButton} variant="contained" color="primary" disableElevation>
+        <Button id="createButton" className={classes.createButton} variant="contained" color="primary" disableElevation>
           <Link  className={classes.createButtonLink} to="/create">
               New Post
           </Link>

@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -17,11 +16,17 @@ const useStyles = makeStyles((theme) => ({
   },
   message: {
     gridRow: '2',
-    gridColumn: '1 / span 2'
+    gridColumn: '1 / span 2',
+    background: 'rgba(255,255,255,0.5)',
+    borderRadius: 5,
+  },
+  formdata: {
+    background: 'rgba(255,255,255,0.5)',
+    borderRadius: 5,
   },
   button: {
     gridRow: '3',
-    gridColumn: '1 / span 2'
+    gridColumn: '1 / span 2',
   },
   text: {
     paddingLeft: '1rem'
@@ -73,8 +78,8 @@ export default function ContactForm() {
       </Typography>
 
       <form className={classes.form} noValidate autoComplete="off" onSubmit={handleOnSubmit}>
-        <TextField id="name" label="Name" variant="outlined"/>
-        <TextField id="email" label="Email" variant="outlined"/>
+        <TextField id="name" className={classes.formdata} label="Name" variant="outlined"/>
+        <TextField id="email" className={classes.formdata} label="Email" variant="outlined"/>
         <TextField 
           className={classes.message}
           id="message" 

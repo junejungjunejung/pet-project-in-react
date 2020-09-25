@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 export default function CatFacts() {
   const classes = useStyles();
   
-  const [image, setImage] = useState("https://cdn2.thecatapi.com/images/MWU55D0sw.jpg")
+  const [image, setImage] = useState("https://cdn2.thecatapi.com/images/U0JD4oEeN.jpg")
   const [text, setText] = useState('Click the button below to check cat facts');
   const [isSending, setIsSending] = useState(false)
   const [isError, setIsError] = useState(false);

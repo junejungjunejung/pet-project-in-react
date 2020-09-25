@@ -31,7 +31,9 @@ const styles = {
     margin: '.5rem'
   },
   input: {
-    width: '250px'
+    width: '250px',
+    background: 'rgba(255,255,255,0.5)',
+    borderRadius: 5,
   },
   button: {
     width: '250px',
@@ -60,6 +62,7 @@ class WeatherInfo extends React.Component {
 
   state = {
     location: '',
+    locationString: '',
     visible: false,
   };
 
@@ -68,6 +71,8 @@ class WeatherInfo extends React.Component {
     e.preventDefault();
     let forecast, isLoading, isError, bgiTime, bgiWeather, weather, isDay;
     const search = new FormData(e.target).get('location');
+   
+    if(search.length<1){ return isError = true };
 
     isError=false;
     isLoading=true;
@@ -81,9 +86,7 @@ class WeatherInfo extends React.Component {
         isDay = res.data.current.is_day;
 
         //simplifying weather description to use it as Unsplash query
-        if(weather.includes('sun')){
-          bgiWeather='sunny'
-        }else if(weather.includes('cloud')){
+        if(weather.includes('cloud')){
           bgiWeather='cloudy'
         }else if(weather.includes('rain')){
           bgiWeather='rainy'
@@ -91,6 +94,12 @@ class WeatherInfo extends React.Component {
           bgiWeather='clear'
         }else if(weather.includes('smoke')){
           bgiWeather='smoky weather'
+        }else if(weather.includes('thunder')){
+          bgiWeather='thunder'
+        }else if(weather.includes('overcast')){
+          bgiWeather='overcast'
+        }else{
+          bgiWeather='sunny'
         }
         //getting localized time from weatherstack to use is as Unsplash query
         if(isDay === 'no'){
@@ -105,8 +114,9 @@ class WeatherInfo extends React.Component {
       isError=true;
       console.log(error);
     }
-  
     isLoading=false;
+    this.setState({locationString : this.state.location});
+
   };
 
   render(){
@@ -137,12 +147,12 @@ class WeatherInfo extends React.Component {
 
           <Typography variant="h6">See weather information</Typography>
           
-          {!this.state.location || weatherInfo.isError || (Object.keys(weatherInfo).length === 0)? 
+          {this.state.locationString !== this.state.location || weatherInfo.isError || (Object.keys(weatherInfo).length === 0)? 
             <Typography className={classes.instruction} variant="body1" component="p" gutterBottom>
             Back ground image of the right side will change based on the location you input in the form above.
             </Typography>: 
             <div className={classes.forecast}>
-              <Typography variant="body1" component="p" >{this.state.location}</Typography>
+              <Typography variant="body1" component="p" >{this.state.locationString}</Typography>
               <Typography variant="body1" component="p" gutterBottom>{weatherInfo.forecast}</Typography>
             </div>}
         </div>

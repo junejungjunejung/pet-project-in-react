@@ -20,12 +20,12 @@ export class EditPost extends React.Component {
     return (
       <div className="edit-post-layout">
         <Typography variant="h4" gutterBottom> Edit Post </Typography>
-        <Link className="dashboard-link" to="/dashboard"> <ArrowBackIcon /> Back to dashboard </Link>
+        <Link className="dashboard-link" to="/dashboard"> <ArrowBackIcon /> <span>Back to dashboard</span></Link>
         <PostForm
           post={this.props.post}
           onSubmit={this.onSubmit}
         />
-        <Button variant="contained" color="primary" disableElevation onClick={this.onRemove} >Delete Post</Button>
+        <Button id="deleteButton" variant="contained" color="primary" disableElevation onClick={this.onRemove} >Delete Post</Button>
       </div>
     );
   }

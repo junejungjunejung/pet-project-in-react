@@ -87,7 +87,7 @@ const ReadMeItem = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          I'm from Korea, and I enjoy developing & designing Web solutions. I love symmetry, balance and collecting postcards from art museums. I also enjoy making things like knitted scarfs to websites.
+          I'm from Korea, and I enjoy developing & designing Web solutions. I love symmetry, balance and collecting postcards from art museums. I also enjoy making things from knitted hats to websites.
           </Typography>
         </AccordionDetails>
       </Accordion>

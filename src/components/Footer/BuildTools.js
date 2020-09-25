@@ -54,7 +54,7 @@ const devTools = [
     url: 'https://material-ui.com/'
   },
   {
-    name: 'weatherstack',
+    name: 'Weatherstack',
     id:4,
     url: 'https://weatherstack.com/'
   },

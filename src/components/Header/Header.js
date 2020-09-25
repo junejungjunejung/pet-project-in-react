@@ -49,12 +49,15 @@ class Header extends React.Component {
     return (
     <AppBar position="sticky" color="default" className={classes.appBar}>
       <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <Link to='/'><img src={logo} alt='logo' id="logo" /></Link>
-          </IconButton>
-          <Typography variant="h6" className={`header-title ${classes.title}`}>
-            <Link to='/' id="logo-text">June Jung</Link>
-          </Typography>
+          <div id="logo-container">
+            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+              <Link to='/'><img src={logo} alt='logo' id="logo" /></Link>
+            </IconButton>
+            <Typography variant="h6" className={`header-title ${classes.title}`}>
+              <Link to='/' id="logo-text">June Jung</Link>
+            </Typography>
+          </div>
+
           <Typography id="header-dashboard-link" variant="subtitle1" className={classes.title}>
             {this.state.log !== 'noUser' && <Link to='/dashboard'>Dashboard</Link>}
           </Typography>
