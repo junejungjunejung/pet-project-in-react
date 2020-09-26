@@ -26,9 +26,8 @@ const styles  = (theme) => ({
 
 // need to auto refresh 
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
-
+  constructor() {
+    super();
     this.state = {
       log: localStorage.getItem('loggedIn'),
     };

@@ -2,9 +2,9 @@ import React from 'react';
 
 const LoadingPage = () => {
   return (
-    <React.Fragment>
+    <div>
       <p>Loading</p>
-    </React.Fragment>
+    </div>
   );
 }
 

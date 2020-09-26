@@ -34,8 +34,8 @@ ReactDOM.render(<LoadingPage />, document.getElementById('root'));
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
+    localStorage.setItem('loggedIn','user');
     store.dispatch(startSetPosts()).then(() => {
-      localStorage.setItem('loggedIn','user');
       history.push('/dashboard');
       renderApp();
     });

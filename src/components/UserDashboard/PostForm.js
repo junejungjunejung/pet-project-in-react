@@ -31,8 +31,7 @@ const styles = (theme) => ({
 
 class PostForm extends React.Component {
   constructor(props) {
-    super(props);
-
+    super();
     this.state = {
       title: props.post ? props.post.title : '',
       content: props.post ? props.post.content : '',

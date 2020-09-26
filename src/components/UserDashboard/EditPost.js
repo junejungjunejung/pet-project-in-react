@@ -9,11 +9,11 @@ import Typography from '@material-ui/core/Typography';
 
 export class EditPost extends React.Component {
   onSubmit = (post) => {
-    this.props.startEditPost(this.props.post.id, post);
+    this.props.startEditPost(post.id, post);
     this.props.history.push('/dashboard');
   };
-  onRemove = () => {
-    this.props.startRemovePost({ id: this.props.post.id });
+  onRemove = (post) => {
+    this.props.startRemovePost({ id: post.id });
     this.props.history.push('/dashboard');
   };
   render() {
