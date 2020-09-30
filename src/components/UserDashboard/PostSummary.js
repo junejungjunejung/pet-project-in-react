@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startRemovePost} from '../../actions/post';
+import { startRemovePost } from '../../actions/post';
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -37,7 +37,7 @@ class PostSummary extends React.Component {
         </Link>
         
         <CardActions>
-          <IconButton aria-label="delete" onClick={this.onRemove}>
+          <IconButton aria-label="edit" >
             <Link className="list-item" to={`/edit/${this.props.id}`}>
               <EditIcon />
             </Link>
@@ -53,7 +53,7 @@ class PostSummary extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  startRemovePost: (data) => dispatch(startRemovePost(data))
+  startRemovePost: (data) => dispatch(startRemovePost(data)),
 });
 
 export default connect(undefined, mapDispatchToProps)(PostSummary);
