@@ -62,7 +62,7 @@ h2, h3, h4, h5, h6{
   min-height: 100vh;
 }
 
-#header-dashboard-link {
+.header-dashboard-link {
   text-align: right;
   padding-right: .75rem;
 }
@@ -70,8 +70,11 @@ h2, h3, h4, h5, h6{
 #login,#logout,#logo-container{
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
   align-items: center;
+}
+
+#login span span, #logout span span{
+  padding-right: 0.75rem;
 }
 
 .sidebar-weather-info {
@@ -98,7 +101,7 @@ h2, h3, h4, h5, h6{
 #sidebar-layout {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
 }
 
