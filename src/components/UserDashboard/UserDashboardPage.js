@@ -63,7 +63,7 @@ const UserDashboardPage = (props) => {
   return (
     <div id="dashboard-layout">
       <Typography variant="h1" gutterBottom>
-        Hi, { userName }.<br/>How’s your day?
+        Hi, { userName }. How’s your day?
       </Typography>
       <div className={classes.postControl}>
         <PostFilter />

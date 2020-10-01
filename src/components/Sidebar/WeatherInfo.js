@@ -50,7 +50,7 @@ const styles = {
   },
   instruction: {
     textAlign: 'left',
-    marginLeft: '.5rem'
+    paddingLeft: '1.5rem'
   }
 };
 

@@ -8,7 +8,6 @@ import { history } from './App';
 import { firebase } from './firebase/firebase';
 import { login, logout } from './actions/auth';
 import { startSetPosts } from './actions/post';
-import LoadingPage from './components/LoadingPage';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -20,14 +19,6 @@ const jsx = (
     <App />
   </Provider>
 );
-
-// let hasRendered = false;
-// const renderApp = () => {
-//   if (!hasRendered) {
-//     ReactDOM.render(jsx, document.getElementById('root'));
-//     hasRendered = true;
-//   }
-// };
 
 const renderApp = () => ReactDOM.render(jsx, document.getElementById('root'));
 
