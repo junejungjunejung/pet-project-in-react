@@ -13,8 +13,8 @@ import NotFoundPage from './components/NotFoundPage';
 
 import UserRoute from './routers/UserRoute';
 import { createBrowserHistory } from 'history';
-import Unsplash, { toJson } from 'unsplash-js';
-
+import { toJson } from 'unsplash-js';
+import unsplash from './unsplash/unsplash';
 import { makeStyles } from '@material-ui/core/styles';
 
 export const history = createBrowserHistory();
@@ -25,11 +25,6 @@ const useStyles = makeStyles(() => ({
     textAlign: 'right'
   }
 }));
-
-//need to hide the key from github
-const unsplash = new Unsplash({
-  accessKey: "",
-});
 
 const App = () => {
   const weather = useSelector(state => ({...state.weather.weather}));

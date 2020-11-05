@@ -11,7 +11,7 @@ a{
   color: #002B7F;
 }
 
-a:active{
+a:hover, a:active{
   text-decoration: underline;
 }
 
@@ -27,7 +27,12 @@ a:active{
 }
 
 .header-dashboard-link {
+  font-size: 18px;
   font-weight: 700;
+}
+
+.header-dashboard-link:hover, .header-dashboard-link:active {
+  text-decoration: underline;
 }
 
 h1{

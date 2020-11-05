@@ -45,7 +45,7 @@ const ReadMeItem = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Once you sign in with Google, you will be directed to the user dashboard and you can create, read, update, and delete posts.
+            Once you sign in with Google, a link to user dashboard will show up on the header navigation. You can create, read, update, and delete posts.
           </Typography>
         </AccordionDetails>
       </Accordion>
