@@ -1,9 +1,11 @@
 import React from 'react';
 
-import Toolbar from '@material-ui/core/Toolbar';
 import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
+
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { makeStyles } from '@material-ui/core/styles';
+
 import PostItem from './PostItem';
 
 const PostList = () => {

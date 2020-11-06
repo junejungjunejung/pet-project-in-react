@@ -12,6 +12,9 @@ import EditPost from '../components/EditPost';
 import UserRoute from './UserRoute';
 import PublicRoute from './PublicRoute';
 
+import axios from 'axios';
+import Unsplash, { toJson } from 'unsplash-js';
+
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 
@@ -20,6 +23,25 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 300
   }
 }));
+
+
+
+
+const unsplash = new Unsplash({
+  accessKey: "",
+
+});
+
+unsplash.search.photos("dogs", 1, 1, { orientation: "landscape" })
+  .then(toJson)
+  .then(json => {
+    console.log(json.results[0].urls.regular)
+  }).catch(err => {
+    console.log(err)
+  });
+
+
+
 
 const AppRouter = () => {
   const classes = useStyles();

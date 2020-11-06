@@ -6,6 +6,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Grid } from '@material-ui/core';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -88,6 +89,7 @@ export default function BuildTools() {
         <List className={classes.list}>
           {devTools.map((devTool) => (
             <ListItem button key={devTool.id}>
+              <FiberManualRecordIcon />
               <ListItemText primary={devTool.name} />
             </ListItem>
           ))}

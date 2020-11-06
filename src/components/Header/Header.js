@@ -56,9 +56,6 @@ export default function ButtonAppBar() {
             <LinkedIn />
           </IconButton>
           <IconButton color="inherit">
-            <LinkedIn />
-          </IconButton>
-          <IconButton color="inherit">
           <GitHub />
           </IconButton>
 
