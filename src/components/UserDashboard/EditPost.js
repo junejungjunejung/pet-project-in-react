@@ -17,7 +17,7 @@ export class EditPost extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Link to={`/dashboard`}> Back to dashboard </Link>
+        <Link to="/dashboard"> Back to dashboard </Link>
         <div>
           <PostForm
             post={this.props.post}

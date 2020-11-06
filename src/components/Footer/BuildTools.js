@@ -69,26 +69,24 @@ export default function BuildTools() {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
-      <Grid
-        container
-        direction="column"
-        justify="center"
-        alignItems="center"
-      >
-        <Typography>This website is built with,</Typography>
-        <List className={classes.list}>
-          {devTools.map((devTool) => (
-            <ListItem button key={devTool.id}>
-              <FiberManualRecordIcon />
-              <a href={devTool.url} target="_blank" rel="noopener noreferrer">
-                <ListItemText primary={devTool.name} />
-              </a>
-            </ListItem>
-          ))}
-        </List>
-        <Typography>and more...</Typography>
-      </Grid>
-    </React.Fragment>
+    <Grid
+      container
+      direction="column"
+      justify="center"
+      alignItems="center"
+    >
+      <Typography>This website is built with,</Typography>
+      <List className={classes.list}>
+        {devTools.map((devTool) => (
+          <ListItem button key={devTool.id}>
+            <FiberManualRecordIcon />
+            <a href={devTool.url} target="_blank" rel="noopener noreferrer">
+              <ListItemText primary={devTool.name} />
+            </a>
+          </ListItem>
+        ))}
+      </List>
+      <Typography>and more...</Typography>
+    </Grid>
   );
 }

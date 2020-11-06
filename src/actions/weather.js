@@ -1,5 +1,7 @@
 import { useEffect, useState }from 'react';
 import axios from 'axios';
+//change this to store (action, reducer)
+//so i can bring state and use it at app router backgroundimage
 
 export const useWeatherApi = () => {
   const [forecast, setForecast] = useState('');

@@ -77,9 +77,7 @@ export default function ButtonAppBar() {
           </a>
 
           <Divider orientation="vertical" flexItem />
-
           { loginButtonToggle}
-
         </Toolbar>
       </AppBar>
     </div>

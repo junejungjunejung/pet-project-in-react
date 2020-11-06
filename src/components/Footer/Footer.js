@@ -5,15 +5,14 @@ import ContactForm from './ContactForm';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <a color="inherit" href="https://material-ui.com/">
         Your Website
-      </Link>{' '}
+      </a>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>

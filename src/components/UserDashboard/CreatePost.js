@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PostForm from './PostForm';
 import { startAddPost } from '../../actions/post';
 
-import Link from '@material-ui/core/Link';
+import { Link } from 'react-router-dom';
 
 export class CreatePost extends React.Component {
   onSubmit = (post) => {
@@ -21,7 +21,7 @@ export class CreatePost extends React.Component {
           </div>
         </div>
         <div className="content-container">
-          <Link href="/dashboard" >Back to Dashboard</Link>
+          <Link to="/dashboard" >Back to Dashboard</Link>
           <PostForm
             onSubmit={this.onSubmit}
           />

@@ -6,7 +6,7 @@ import PostItem from './PostItem';
 const ReadPost = (props) => {
   return (
     <React.Fragment>
-      <Link to={`/dashboard`}> Back to dashboard </Link>
+      <Link to="/dashboard"> Back to dashboard </Link>
       <PostItem post={props.post}/>
     </React.Fragment>
   );

@@ -4,6 +4,7 @@ import authReducer from '../reducers/auth';
 import postsReducer from '../reducers/post';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//need to add weatherReducer
 
 export default () => {
   const store = createStore(

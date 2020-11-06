@@ -23,8 +23,8 @@ const PostItem = ({ id, postTitle, postBody, createdAt }) => {
   const classes = useStyles();
 
   return(
-    <Link to={`/read/${id}`}>
-      <Card className={classes.root}>
+    <Card className={classes.root}>
+      <Link to={`/read/${id}`}>
         <CardActionArea>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
@@ -38,16 +38,17 @@ const PostItem = ({ id, postTitle, postBody, createdAt }) => {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            <Link className="list-item" to={`/edit/${id}`}>Edit</Link>
-          </Button>
-          <Button size="small" color="primary" >
-            Delete
-          </Button>
-        </CardActions>
-      </Card>
-    </Link>
+      </Link>
+      
+      <CardActions>
+        <Button size="small" color="primary">
+          <Link className="list-item" to={`/edit/${id}`}>Edit</Link>
+        </Button>
+        <Button size="small" color="primary" >
+          Delete
+        </Button>
+      </CardActions>
+    </Card>
   )
 }
 
